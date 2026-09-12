@@ -1,0 +1,21 @@
+{
+  "detail": {
+    "back": "Retour aux propositions",
+    "share": "Partager",
+    "bookmark": "Enregistrer",
+    "badgeProposal": "Proposition technique",
+    "published": "Publié le",
+    "minRead": "min de lecture",
+    "supportWidgetTitle": "Soutenez-vous cette proposition",
+    "supportWidgetSubtitle": "Votre vote nous aide à prioriser les prototypes à développer en premier",
+    "upvote": "Je la soutiens",
+    "downvote": "Je ne suis pas d'accord",
+    "inDevelopment": "Cette proposition est en cours de développement",
+    "inDevelopmentSub": "Nous travaillons sur la spécification technique complète. Revenez bientôt ou rejoignez l'équipe pour contribuer",
+    "executiveSummary": "Résumé exécutif",
+    "problemTitle": "Le problème",
+    "architectureTitle": "Architecture technique",
+    "benchmarkTitle": "Benchmark international",
+    "roadmapTitle": "Feuille de route"
+  }
+}

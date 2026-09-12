@@ -1,0 +1,91 @@
+{
+  "site": {
+    "name": "UNNAMED",
+    "shortName": "U",
+    "description": "Une initiative de professionnels IT haïtiens apportant des solutions technologiques concrètes pour une administration publique efficace"
+  },
+  "nav": {
+    "proposals": "Propositions",
+    "about": "À propos",
+    "howWeWork": "Notre approche",
+    "join": "Rejoindre",
+    "language": "Langue",
+    "theme": {
+      "light": "Mode clair",
+      "dark": "Mode sombre"
+    }
+  },
+  "hero": {
+    "title": "Propositions pour moderniser l'État haïtien",
+    "subtitle": "Une initiative de professionnels IT haïtiens (en Haïti et dans la diaspora) apportant des solutions technologiques concrètes pour une administration publique efficace",
+    "ctaExplore": "Explorer les propositions",
+    "ctaApproach": "Notre approche"
+  },
+  "about": {
+    "title": "À propos de nous",
+    "description": "Nous ne sommes ni une ONG ni une entité gouvernementale formelle. Nous sommes un collectif informel d'ingénieurs, de développeurs et d'experts IT unis par la volonté de numériser Haïti. Nous analysons les besoins réels et concevons des architectures techniques prêtes à être déployées, en privilégiant l'agilité face à la bureaucratie",
+    "networkVisualLabel": "Représentation visuelle du réseau IT"
+  },
+  "catalog": {
+    "title": "Catalogue de solutions",
+    "subtitle": "Propositions techniques structurées par domaines clés d'impact national",
+    "viewAll": "Voir tout",
+    "filterAria": "Filtrer les propositions par catégorie",
+    "noResults": "Aucune proposition trouvée dans cette catégorie"
+  },
+  "categories": {
+    "all": "Tout",
+    "identity": "Identité",
+    "elections": "Élections",
+    "health": "Santé",
+    "education": "Éducation",
+    "security": "Sécurité",
+    "infrastructure": "Infrastructure"
+  },
+  "card": {
+    "statusComplete": "Proposition complète",
+    "statusInDevelopment": "En cours de développement",
+    "viewDetails": "Voir les détails",
+    "readMore": "En savoir plus"
+  },
+  "approach": {
+    "title": "Notre démarche technique",
+    "step1": {
+      "number": "01",
+      "title": "Diagnostic",
+      "description": "Nous analysons les processus physiques actuels et leurs goulots d'étranglement systémiques"
+    },
+    "step2": {
+      "number": "02",
+      "title": "Benchmark",
+      "description": "Nous étudions des solutions éprouvées dans des pays aux contextes comparables"
+    },
+    "step3": {
+      "number": "03",
+      "title": "Architecture",
+      "description": "Nous concevons des architectures technologiques évolutives, des modèles de données et des protocoles sécurisés"
+    },
+    "step4": {
+      "number": "04",
+      "title": "Cadre légal",
+      "description": "Nous identifions les ajustements réglementaires minimaux indispensables à la viabilité du projet"
+    }
+  },
+  "cta": {
+    "title": "Combien de temps allons-nous encore attendre pour un morceau de papier",
+    "paragraph": "En Haïti, naître, voter ou créer une entreprise ne sont que trois exemples d'une liste interminable de démarches paralysées par la paperasserie manuelle. Tandis que le monde avance à la vitesse de la seconde, nous attendons ici encore des mois pour un passeport, quémandant des faveurs pour ouvrir un commerce ou luttant simplement pour obtenir un acte de naissance. Absolument tout fonctionne ainsi",
+    "highlight": "La technologie n'est pas un luxe, c'est la fin de l'humiliation bureaucratique",
+    "btnShare": "Partager cette vision",
+    "btnJoin": "Rejoindre l'équipe IT"
+  },
+  "footer": {
+    "location": "Au cœur des citoyens",
+    "copyright": "Initiative citoyenne IT",
+    "links": {
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "contact": "Contact"
+    }
+  }
+}

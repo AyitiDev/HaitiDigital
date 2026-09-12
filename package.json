@@ -6,7 +6,10 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
+    "clean": "rimraf .astro dist node_modules/.vite",
+    "predev": "npm run clean",
+    "dev": "astro dev --force",
+    "prebuild": "npm run clean",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -17,6 +20,9 @@
     "astro": "^7.3.2",
     "lucide-astro": "^0.556.0",
     "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1"
   },
   "allowScripts": {
     "esbuild": true

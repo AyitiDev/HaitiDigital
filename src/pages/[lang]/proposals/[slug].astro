@@ -3,18 +3,24 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Icon from '../../../components/ui/Icon.astro';
 import ProposalVoteWidget from '../../../components/ui/ProposalVoteWidget.astro';
 import { getProposals, getProposalBySlug } from '../../../data/proposals';
-import { useUi, useProposals, getLocalizedPath, type SupportedLanguage } from '../../../i18n/utils';
+import { useUi, useProposals, getLocalizedPath, activeLanguages, type SupportedLanguage } from '../../../i18n/utils';
 
 export function getStaticPaths() {
-  const proposals = getProposals();
-  return proposals.map((proposal) => ({
-    params: { lang: 'en', slug: proposal.slug },
-    props: { proposal },
-  }));
+  const paths: { params: { lang: SupportedLanguage; slug: string }; props: { proposal: any } }[] = [];
+  for (const lang of activeLanguages) {
+    const proposals = getProposals(lang);
+    for (const proposal of proposals) {
+      paths.push({
+        params: { lang, slug: proposal.slug },
+        props: { proposal },
+      });
+    }
+  }
+  return paths;
 }
 
 const { lang, slug } = Astro.params as { lang: SupportedLanguage; slug: string };
-const proposal = Astro.props.proposal ?? getProposalBySlug(slug);
+const proposal = Astro.props.proposal ?? getProposalBySlug(slug, lang);
 
 if (!proposal) {
   return Astro.redirect(getLocalizedPath('/', lang));
