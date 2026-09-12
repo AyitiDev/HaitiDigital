@@ -1,0 +1,87 @@
+---
+import Icon from './Icon.astro';
+import type { Proposal } from '../../data/types';
+import { useUi, getLocalizedPath, type SupportedLanguage } from '../../i18n/utils';
+
+interface Props {
+  proposal: Proposal;
+  lang?: SupportedLanguage;
+  isSelected?: boolean;
+}
+
+const { proposal, lang = 'en', isSelected = false } = Astro.props;
+const t = useUi(lang);
+const detailUrl = getLocalizedPath(`/proposals/${proposal.slug}`, lang);
+const isComplete = proposal.status === 'complete';
+const statusLabel = isComplete ? t('card.statusComplete') : t('card.statusInDevelopment');
+const categoryLabel = t(`categories.${proposal.category}` as any, proposal.category);
+---
+
+<div
+  data-proposal-card
+  data-category={proposal.category}
+  data-slug={proposal.slug}
+  class={`proposal-card group relative flex flex-col justify-between rounded-2xl p-5 transition-all duration-200 cursor-pointer border ${
+    isSelected
+      ? 'bg-neutral-50 dark:bg-neutral-900 border-neutral-900 dark:border-white ring-1 ring-neutral-900 dark:ring-white'
+      : 'bg-white dark:bg-neutral-900/50 border-neutral-200 dark:border-neutral-800 hover:border-neutral-700 dark:hover:border-neutral-600 hover:shadow-sm'
+  }`}
+>
+  <div>
+    <div class="flex items-center justify-between gap-2 mb-4">
+      <div class={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-150 ${
+        isSelected
+          ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900'
+          : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 group-hover:bg-neutral-900 dark:group-hover:bg-white group-hover:text-white dark:group-hover:text-neutral-900'
+      }`}>
+        <Icon name={proposal.icon} class="w-4 h-4" />
+      </div>
+
+      <div class="flex items-center gap-1.5">
+        <span class="text-[10px] font-bold tracking-widest text-neutral-400 dark:text-neutral-500 uppercase">
+          {categoryLabel}
+        </span>
+        {isSelected && (
+          <span class="w-4 h-4 rounded-full bg-neutral-900 dark:bg-white flex items-center justify-center">
+            <Icon name="check" class="w-2.5 h-2.5 text-white dark:text-neutral-900" />
+          </span>
+        )}
+      </div>
+    </div>
+
+    <h3 class="text-base sm:text-lg font-bold text-neutral-900 dark:text-white tracking-tight leading-snug mb-2">
+      <a href={detailUrl} class="focus:outline-none after:absolute after:inset-0">
+        {proposal.title}
+      </a>
+    </h3>
+    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed line-clamp-3">
+      {proposal.summary}
+    </p>
+  </div>
+
+  <div class="pt-4 mt-4 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between gap-2">
+    <div class="flex items-center gap-1.5">
+      <span class={`w-1.5 h-1.5 rounded-full ${isComplete ? 'bg-neutral-900 dark:bg-white' : 'bg-neutral-300 dark:bg-neutral-600'}`}></span>
+      <span class="text-xs text-neutral-500 dark:text-neutral-500">
+        {statusLabel}
+      </span>
+    </div>
+
+    {isSelected ? (
+      <a
+        href={detailUrl}
+        class="relative z-10 inline-flex items-center px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-neutral-900 dark:text-white border border-neutral-900 dark:border-white rounded-md hover:bg-neutral-900 dark:hover:bg-white hover:text-white dark:hover:text-neutral-900 transition-colors"
+      >
+        {t('card.viewDetails')}
+      </a>
+    ) : (
+      <a
+        href={detailUrl}
+        aria-label={`${t('card.readMore')}: ${proposal.title}`}
+        class="relative z-10 p-1 text-neutral-300 dark:text-neutral-600 group-hover:text-neutral-900 dark:group-hover:text-white group-hover:translate-x-0.5 transition-all inline-flex"
+      >
+        <Icon name="arrow-right" class="w-4 h-4" />
+      </a>
+    )}
+  </div>
+</div>

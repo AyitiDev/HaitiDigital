@@ -1,0 +1,91 @@
+{
+  "site": {
+    "name": "UNNAMED",
+    "shortName": "U",
+    "description": "An initiative of Haitian IT professionals delivering concrete technological solutions for an efficient public administration"
+  },
+  "nav": {
+    "proposals": "Proposals",
+    "about": "About",
+    "howWeWork": "Our approach",
+    "join": "Join",
+    "language": "Language",
+    "theme": {
+      "light": "Light mode",
+      "dark": "Dark mode"
+    }
+  },
+  "hero": {
+    "title": "Proposals to modernize the Haitian State",
+    "subtitle": "An initiative of Haitian IT professionals (local and diaspora) delivering concrete technological solutions for an efficient public administration",
+    "ctaExplore": "Explore proposals",
+    "ctaApproach": "Our approach"
+  },
+  "about": {
+    "title": "About us",
+    "description": "We are neither an NGO nor a formal government entity. We are an informal group of engineers, developers, and IT specialists united by the desire to digitalize Haiti. We investigate real needs and propose implementation ready technical architectures, prioritizing agility over bureaucracy",
+    "networkVisualLabel": "Visual representation of the IT network"
+  },
+  "catalog": {
+    "title": "Solutions catalog",
+    "subtitle": "Technical proposals structured by key areas of national impact",
+    "viewAll": "View all",
+    "filterAria": "Filter proposals by category",
+    "noResults": "No proposals found in this category"
+  },
+  "categories": {
+    "all": "All",
+    "identity": "Identity",
+    "elections": "Elections",
+    "health": "Health",
+    "education": "Education",
+    "security": "Security",
+    "infrastructure": "Infrastructure"
+  },
+  "card": {
+    "statusComplete": "Complete proposal",
+    "statusInDevelopment": "In development",
+    "viewDetails": "View details",
+    "readMore": "Read more"
+  },
+  "approach": {
+    "title": "Our technical approach",
+    "step1": {
+      "number": "01",
+      "title": "Diagnosis",
+      "description": "We analyze current analog processes and their systemic bottlenecks"
+    },
+    "step2": {
+      "number": "02",
+      "title": "Benchmark",
+      "description": "We study proven solutions implemented in nations with comparable contexts"
+    },
+    "step3": {
+      "number": "03",
+      "title": "Architecture",
+      "description": "We architect scalable technology stacks, data models, and secure protocols"
+    },
+    "step4": {
+      "number": "04",
+      "title": "Legal Framework",
+      "description": "We identify the minimum regulatory adjustments required for viability"
+    }
+  },
+  "cta": {
+    "title": "How long are we going to wait for a piece of paper",
+    "paragraph": "In Haiti, being born, voting, or starting a business is an obstacle course of manual paperwork. While the world moves in seconds, we remain trapped in endless queues, waiting months for a passport or begging for a favor just to incorporate a company",
+    "highlight": "Technology is not a luxury, it is the end of bureaucratic humiliation",
+    "btnShare": "Share this vision",
+    "btnJoin": "Join the IT team"
+  },
+  "footer": {
+    "location": "In the heart of citizens",
+    "copyright": "Citizen IT initiative",
+    "links": {
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "contact": "Contact"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+---
+import CategoryChip from '../ui/CategoryChip.astro';
+import ProposalCard from '../ui/ProposalCard.astro';
+import { getProposals, CATEGORIES_CONFIG, getCategoryCounts } from '../../data/proposals';
+import { useUi, type SupportedLanguage } from '../../i18n/utils';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useUi(lang);
+
+const proposals = getProposals();
+const counts = getCategoryCounts();
+
+const categories = CATEGORIES_CONFIG.map((cat) => ({
+  id: cat.id,
+  label: t(cat.labelKey as any, cat.id),
+  count: counts[cat.id] ?? 0,
+}));
+---
+
+<section id="catalog" class="w-full py-14 sm:py-20 border-t border-neutral-100 dark:border-neutral-800 bg-white dark:bg-neutral-950 transition-colors duration-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <div class="mb-8 sm:mb-10">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-neutral-950 dark:text-white tracking-tight mb-1.5">
+        {t('catalog.title')}
+      </h2>
+      <p class="text-sm sm:text-base text-neutral-500 dark:text-neutral-400">
+        {t('catalog.subtitle')}
+      </p>
+    </div>
+
+    <div
+      role="radiogroup"
+      aria-label={t('catalog.filterAria')}
+      class="w-full overflow-x-auto scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0 pb-1 mb-8"
+    >
+      <div class="inline-flex sm:flex sm:flex-wrap items-center gap-2 min-w-max sm:min-w-0">
+        {categories.map((cat, idx) => (
+          <CategoryChip
+            id={cat.id}
+            label={cat.label}
+            count={cat.count}
+            isActive={idx === 0}
+          />
+        ))}
+      </div>
+    </div>
+
+    <div id="proposals-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {proposals.map((proposal) => (
+        <ProposalCard proposal={proposal} lang={lang} />
+      ))}
+    </div>
+
+    <div id="empty-proposals-msg" class="hidden py-12 text-center text-sm text-neutral-400 dark:text-neutral-600">
+      {t('catalog.noResults')}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function setupFilter() {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('[data-category-filter]');
+    const cards = document.querySelectorAll<HTMLElement>('[data-proposal-card]');
+    const empty = document.getElementById('empty-proposals-msg');
+
+    function apply(selected: string) {
+      let visible = 0;
+
+      buttons.forEach((btn) => {
+        const cat = btn.getAttribute('data-category-filter');
+        const active = cat === selected;
+        btn.setAttribute('aria-checked', active ? 'true' : 'false');
+        const isDark = document.documentElement.classList.contains('dark');
+        if (active) {
+          btn.className = 'category-chip-btn inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-150 cursor-pointer select-none whitespace-nowrap bg-neutral-900 dark:bg-white text-white dark:text-neutral-900';
+        } else {
+          btn.className = 'category-chip-btn inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-150 cursor-pointer select-none whitespace-nowrap bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-neutral-900 dark:hover:text-white';
+        }
+      });
+
+      cards.forEach((card) => {
+        const cat = card.getAttribute('data-category');
+        const show = selected === 'all' || cat === selected;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+
+      if (empty) empty.classList.toggle('hidden', visible > 0);
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        apply(btn.getAttribute('data-category-filter') || 'all');
+      });
+    });
+  }
+
+  setupFilter();
+  document.addEventListener('astro:page-load', setupFilter);
+</script>

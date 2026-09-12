@@ -1,0 +1,30 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  count?: number;
+  isActive?: boolean;
+  class?: string;
+}
+
+const { id, label, count, isActive = false, class: customClass = '' } = Astro.props;
+---
+
+<button
+  type="button"
+  role="radio"
+  aria-checked={isActive ? 'true' : 'false'}
+  data-category-filter={id}
+  class={`category-chip-btn inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-150 cursor-pointer select-none whitespace-nowrap ${
+    isActive
+      ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900'
+      : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-neutral-900 dark:hover:text-white'
+  } ${customClass}`}
+>
+  <span>{label}</span>
+  {count !== undefined && (
+    <span class={`tabular-nums text-[11px] ${isActive ? 'text-neutral-300 dark:text-neutral-600' : 'text-neutral-400 dark:text-neutral-500'}`}>
+      {count}
+    </span>
+  )}
+</button>

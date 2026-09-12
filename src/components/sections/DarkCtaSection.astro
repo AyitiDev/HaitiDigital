@@ -1,0 +1,56 @@
+---
+import Icon from '../ui/Icon.astro';
+import { useUi, type SupportedLanguage } from '../../i18n/utils';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useUi(lang);
+---
+
+<section id="join" class="w-full py-14 sm:py-20 border-t border-neutral-100 dark:border-neutral-800 bg-white dark:bg-neutral-950 transition-colors duration-200">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-6">
+    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-neutral-950 dark:text-white leading-tight">
+      {t('cta.title')}
+    </h2>
+    <p class="text-sm sm:text-base text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto">
+      {t('cta.paragraph')}
+    </p>
+    <p class="text-base font-semibold text-neutral-900 dark:text-white">
+      {t('cta.highlight')}
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+      <button
+        id="share-btn"
+        type="button"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-sm font-semibold hover:bg-neutral-700 dark:hover:bg-neutral-100 transition-colors cursor-pointer"
+      >
+        <Icon name="share-2" class="w-4 h-4" />
+        {t('cta.btnShare')}
+      </button>
+      <a
+        href="https://github.com/AyitiDev"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
+      >
+        <Icon name="users" class="w-4 h-4" />
+        {t('cta.btnJoin')}
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('share-btn')?.addEventListener('click', async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: document.title, url: window.location.href });
+      } catch {}
+    } else {
+      await navigator.clipboard.writeText(window.location.href);
+    }
+  });
+</script>

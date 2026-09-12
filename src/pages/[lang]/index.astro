@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroSection from '../../components/sections/HeroSection.astro';
+import AboutSection from '../../components/sections/AboutSection.astro';
+import CatalogSection from '../../components/sections/CatalogSection.astro';
+import ApproachSection from '../../components/sections/ApproachSection.astro';
+import DarkCtaSection from '../../components/sections/DarkCtaSection.astro';
+import type { SupportedLanguage } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguage };
+---
+
+<BaseLayout lang={lang}>
+  <HeroSection lang={lang} />
+  <AboutSection lang={lang} />
+  <CatalogSection lang={lang} />
+  <ApproachSection lang={lang} />
+  <DarkCtaSection lang={lang} />
+</BaseLayout>

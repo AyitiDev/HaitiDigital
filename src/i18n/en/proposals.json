@@ -1,0 +1,21 @@
+{
+  "detail": {
+    "back": "Back to proposals",
+    "share": "Share",
+    "bookmark": "Save",
+    "badgeProposal": "Technical proposal",
+    "published": "Published",
+    "minRead": "min read",
+    "supportWidgetTitle": "Do you support this technical proposal",
+    "supportWidgetSubtitle": "Your vote helps prioritize prototype development",
+    "upvote": "Support",
+    "downvote": "Disagree",
+    "executiveSummary": "Executive summary",
+    "problemTitle": "The Problem",
+    "architectureTitle": "Proposed Technical Architecture",
+    "benchmarkTitle": "International Benchmark",
+    "roadmapTitle": "Roadmap",
+    "inDevelopment": "This proposal is currently in active development",
+    "inDevelopmentSub": "We are working on the full technical specification. Check back soon or join the team to contribute"
+  }
+}

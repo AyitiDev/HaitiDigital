@@ -1,0 +1,37 @@
+---
+import Icon from '../ui/Icon.astro';
+import { useUi, type SupportedLanguage } from '../../i18n/utils';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useUi(lang);
+---
+
+<section id="about" class="w-full py-14 sm:py-20 border-t border-neutral-100 dark:border-neutral-800 bg-white dark:bg-neutral-950 transition-colors duration-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+
+      <div class="space-y-3">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-neutral-950 dark:text-white tracking-tight">
+          {t('about.title')}
+        </h2>
+        <p class="text-base text-neutral-500 dark:text-neutral-400 leading-relaxed">
+          {t('about.description')}
+        </p>
+      </div>
+
+      <div class="w-full rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/70 dark:border-neutral-800 p-8 flex flex-col items-center justify-center text-center min-h-[180px] transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center mb-3">
+          <Icon name="users" class="w-6 h-6 text-neutral-500 dark:text-neutral-400" />
+        </div>
+        <span class="text-xs text-neutral-400 dark:text-neutral-500 max-w-xs">
+          {t('about.networkVisualLabel')}
+        </span>
+      </div>
+
+    </div>
+  </div>
+</section>

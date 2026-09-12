@@ -1,0 +1,63 @@
+---
+import {
+  IdCard,
+  Vote,
+  Stethoscope,
+  GraduationCap,
+  ShieldAlert,
+  Zap,
+  Check,
+  ArrowRight,
+  ArrowLeft,
+  ThumbsUp,
+  ThumbsDown,
+  Share2,
+  Bookmark,
+  Users,
+  Menu,
+  X,
+  Github,
+  Twitter,
+  Sun,
+  Moon,
+  Network,
+  FileText,
+} from 'lucide-astro';
+
+interface Props {
+  name: string;
+  class?: string;
+  size?: number;
+  id?: string;
+}
+
+const { name, class: className = 'w-5 h-5', size = 20, id } = Astro.props;
+
+const iconMap: Record<string, any> = {
+  'id-card': IdCard,
+  'vote': Vote,
+  'stethoscope': Stethoscope,
+  'graduation-cap': GraduationCap,
+  'shield-alert': ShieldAlert,
+  'zap': Zap,
+  'check': Check,
+  'arrow-right': ArrowRight,
+  'arrow-left': ArrowLeft,
+  'thumbs-up': ThumbsUp,
+  'thumbs-down': ThumbsDown,
+  'share-2': Share2,
+  'bookmark': Bookmark,
+  'users': Users,
+  'menu': Menu,
+  'x': X,
+  'github': Github,
+  'twitter': Twitter,
+  'sun': Sun,
+  'moon': Moon,
+  'network': Network,
+};
+
+const SelectedIcon = iconMap[name] || FileText;
+---
+
+<SelectedIcon class={className} size={size} id={id} />

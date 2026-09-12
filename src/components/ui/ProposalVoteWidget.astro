@@ -1,0 +1,105 @@
+---
+import Icon from './Icon.astro';
+import { useProposals, type SupportedLanguage } from '../../i18n/utils';
+
+interface Props {
+  proposalId: string;
+  initialUpvotes: number;
+  initialDislikes: number;
+  lang?: SupportedLanguage;
+}
+
+const { proposalId, initialUpvotes, initialDislikes, lang = 'en' } = Astro.props;
+const t = useProposals(lang);
+---
+
+<div
+  id="vote-widget"
+  data-proposal-id={proposalId}
+  data-initial-upvotes={initialUpvotes}
+  data-initial-dislikes={initialDislikes}
+  class="my-6 p-5 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-colors"
+>
+  <div>
+    <h3 class="text-sm font-bold text-neutral-900 dark:text-white mb-0.5">
+      {t('detail.supportWidgetTitle')}
+    </h3>
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      {t('detail.supportWidgetSubtitle')}
+    </p>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <button
+      id="upvote-btn"
+      type="button"
+      class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-sm font-semibold hover:border-neutral-900 dark:hover:border-neutral-400 transition-all cursor-pointer"
+      aria-label={t('detail.upvote')}
+    >
+      <Icon name="thumbs-up" class="w-4 h-4" />
+      <span id="upvote-count" class="tabular-nums font-bold">{initialUpvotes}</span>
+    </button>
+
+    <button
+      id="downvote-btn"
+      type="button"
+      class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-sm font-semibold hover:border-neutral-900 dark:hover:border-neutral-400 transition-all cursor-pointer"
+      aria-label={t('detail.downvote')}
+    >
+      <Icon name="thumbs-down" class="w-4 h-4" />
+      <span id="downvote-count" class="tabular-nums font-bold">{initialDislikes}</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  function setupVoting() {
+    const widget = document.getElementById('vote-widget');
+    if (!widget) return;
+
+    const proposalId = widget.getAttribute('data-proposal-id') || 'default';
+    const upBtn = document.getElementById('upvote-btn');
+    const downBtn = document.getElementById('downvote-btn');
+    const upEl = document.getElementById('upvote-count');
+    const downEl = document.getElementById('downvote-count');
+
+    const base = {
+      up: parseInt(widget.getAttribute('data-initial-upvotes') || '0', 10),
+      down: parseInt(widget.getAttribute('data-initial-dislikes') || '0', 10),
+    };
+
+    const key = `vote_${proposalId}`;
+    let vote: 'up' | 'down' | null = localStorage.getItem(key) as any;
+
+    function render() {
+      if (!upBtn || !downBtn || !upEl || !downEl) return;
+      const up = base.up + (vote === 'up' ? 1 : 0);
+      const down = base.down + (vote === 'down' ? 1 : 0);
+      upEl.textContent = String(up);
+      downEl.textContent = String(down);
+
+      const activeClass = 'border-2 border-neutral-900 dark:border-white bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-bold';
+      const neutralClass = 'border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-neutral-900 dark:hover:border-neutral-400 font-semibold';
+
+      upBtn.className = `inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm transition-all cursor-pointer ${vote === 'up' ? activeClass : neutralClass}`;
+      downBtn.className = `inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm transition-all cursor-pointer ${vote === 'down' ? activeClass : neutralClass}`;
+    }
+
+    upBtn?.addEventListener('click', () => {
+      vote = vote === 'up' ? null : 'up';
+      vote ? localStorage.setItem(key, vote) : localStorage.removeItem(key);
+      render();
+    });
+
+    downBtn?.addEventListener('click', () => {
+      vote = vote === 'down' ? null : 'down';
+      vote ? localStorage.setItem(key, vote) : localStorage.removeItem(key);
+      render();
+    });
+
+    render();
+  }
+
+  setupVoting();
+  document.addEventListener('astro:page-load', setupVoting);
+</script>
