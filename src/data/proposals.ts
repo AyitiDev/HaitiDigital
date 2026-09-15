@@ -1,4 +1,5 @@
 import type { Proposal, ProposalCategory } from './types';
+import { getLocalizedProposalContent, type SupportedLanguage } from '../i18n/utils';
 
 export const PROPOSALS: Proposal[] = [
   {

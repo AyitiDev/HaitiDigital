@@ -1,1 +1,21 @@
-{}
+{
+  "detail": {
+    "back": "Retounen nan pwopozisyon yo",
+    "share": "Pataje",
+    "bookmark": "Anrejistre",
+    "badgeProposal": "Pwopozisyon teknik",
+    "published": "Pibliye",
+    "minRead": "min lekti",
+    "supportWidgetTitle": "Èske w dakò ak pwopozisyon sa",
+    "supportWidgetSubtitle": "Vòt ou a ap ede nou priyorize pwototip ki dwe develope premyeman",
+    "upvote": "Mwen dakò",
+    "downvote": "Mwen pa dakò",
+    "inDevelopment": "Pwopozisyon sa an devlopman",
+    "inDevelopmentSub": "Nou ap travay sou spesifikasyon konplè teknik. Retounen ankò oubyen rejwenn ekip la pou w kontribiye",
+    "executiveSummary": "Rezime egzekitif",
+    "problemTitle": "Pwoblèm nan",
+    "architectureTitle": "Achitekti teknik",
+    "benchmarkTitle": "Benchmark entènasyonal",
+    "roadmapTitle": "Plan"
+  }
+}

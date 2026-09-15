@@ -1,1 +1,271 @@
-{}
+{
+  "title": "Rejis Sivil Nimerik",
+  "leadTitle": "Nan direksyon yon rejis sivil dijital: premye pa Ayiti pou rive nan souver\u00e8nte teknolojik",
+  "summary": "Yon sist\u00e8m idantite nimerik santralize ak ent\u00e8opeyab pou konbat mank enskripsyon epi p\u00e8m\u00e8t sitwayen yo f\u00e8 pwosedi ofisy\u00e8l yo an sekirite, k\u00e8lkeswa kote yo ye",
+  "meta": {
+    "author": "Ekip Ayiti Dijital",
+    "category": "Pwopozisyon sou Gouv\u00e8nans Dijital",
+    "readingTime": "14 min lekti"
+  },
+  "executiveSummary": "85% nan ofisye eta sivil Ayiti yo te nonmen an 1995, e anpil ladan yo pa nan kondisyon ank\u00f2 pou egz\u00e8se fonksyon yo. Sist\u00e8m akty\u00e8l la, ki divize ant plizy\u00e8 enstitisyon san yon manda ki kl\u00e8, kite plizy\u00e8 milye moun san ak nesans, san kat idantite epi san aks\u00e8 ak dwa fondamantal. Nou pwopoze kreyasyon yon nouvo enstitisyon ki ta konsakre s\u00e8lman nan rejis sivil, av\u00e8k yon achitekti teknolojik ki deja pwouve nan l\u00f2t peyi, epi nou esplike sa yon lwa ta bezwen prevwa pou rann sist\u00e8m sa a posib, san nou pa pretann nou gen tout repons yo.",
+  "diagrams": {
+    "governance": {
+      "label": "Dyagram 1: Organigram Gouv\u00e8nans Enstitisyon\u00e8l"
+    },
+    "architecture": {
+      "label": "Dyagram 3: Organigram Achitekti S\u00e8v\u00e8 ak Rezo"
+    },
+    "workflow": {
+      "label": "Dyagram 2: Dyagram Eta Pwosesis Enskripsyon an"
+    }
+  },
+  "sections": {
+    "section1": {
+      "title": "Efondreman Silansye Rejis Sivil Ayisyen an",
+      "p1": "Sist\u00e8m eta sivil Ayiti a ap trav\u00e8se yon kriz estriktir\u00e8l ki byen dokimante. Yon rap\u00f2 \u00d2ganizasyon Sitwayen pou yon Nouvo Ayiti (OCNH), ki te pibliye nan mwa mas 2026, revele pr\u00e8ske 85% nan ofisye eta sivil ki aktif yo te nonmen an 1995, e anpil ladan yo pa kapab kontinye egz\u00e8se fonksyon yo akoz laj oswa pwobl\u00e8m vizyon. Sa kite yon mend\u00e8v ki aje ap soutni idantite legal tout yon peyi.",
+      "p2": "Envestigasyon OCNH te f\u00e8 sou teren an konfime sa anpil fanmi deja ap viv dir\u00e8kteman: plizy\u00e8 biwo rejis sivil fonksyone yon fason iregilye oswa yo f\u00e8men n\u00e8t. Biwo Terre Neuve nan depatman Latibonit f\u00e8men depi jiy\u00e8 2024, epi nan Site Sol\u00e8y, nan depatman Lw\u00e8s, biwo a pa aktif depi jen 2021. Sa f\u00f2se sitwayen yo vwayaje jis Delma pou jwenn yon dokiman ki senp tankou yon ak nesans.",
+      "p3": "Konsekans yo pa abstr\u00e8: timoun ak el\u00e8v pa kapab enskri pou egzamen ofisy\u00e8l, j\u00e8n moun pa par\u00e8t sou lis enskripsyon elektoral yo, difikilte pou pwouve filyasyon oswa idantite legal konplike aks\u00e8 ak lajistis, epi emisyon pasp\u00f2 paralize, sa ki bloke pwoj\u00e8 migrasyon plizy\u00e8 milye moun.",
+      "p4": "Pwobl\u00e8m sa a pa nouvo. Depi 2008, ka Ericq Pierre, ki te kandida pou p\u00f2s Premye Minis nan ep\u00f2k la, te mete pwobl\u00e8m nan sou tab la nan pi wo nivo: menm li pa t kapab jwenn ak nesans granparan li yo pou pwouve orijin ayisyen li. Yon rap\u00f2 Nasyonzini sou tranblemannt\u00e8 2021 an te dokimante estrikti ki responsab rejis sivil la \"egziste s\u00e8lman sou non\" akoz mank bidj\u00e8, sa ki kite ofisye lokal yo ap travay san okenn kontw\u00f2l rey\u00e8l.",
+      "sourcesTitle": "Sous:",
+      "sources": [
+        {
+          "name": "OCNH revele kriz rejis sivil la, 85% ofisye yo te nonmen an 1995",
+          "url": "https://lereliefhaiti.com/articles/haiti-civil-registry-system-in-crisis-threatens-citizens-fundamental-rights"
+        },
+        {
+          "name": "Le Nouvelliste rap\u00f2te rezilta OCNH sou febl\u00e8s sist\u00e8m nan, mas 2026",
+          "url": "https://lenouvelliste.com/en/article/266348/ocnh-report-exposes-new-weaknesses-in-haitis-civil-registry-system"
+        },
+        {
+          "name": "Camille Occius (OCNH) av\u00e8ti sou risk apatrid nan z\u00f2n riral yo",
+          "url": "https://lenouvelliste.com/en/article/262527/camille-occius-warns-of-a-deepening-civil-registry-crisis-in-haiti"
+        },
+        {
+          "name": "Aks\u00e8 ak dokiman eta sivil: yon dwa fondamantal ki an danje",
+          "url": "https://www.lereliefhaiti.com/en/articles/access-to-civil-status-documents-in-haiti-ocnh-denounces-a-fundamental-right-in-peril"
+        }
+      ]
+    },
+    "section2": {
+      "title": "Pwopozisyon an: Yon Enstitisyon ki f\u00e8t pou sa, e s\u00e8lman pou sa",
+      "p1": "Jodi a, yon pati nan fonksyon rejis sivil la tonbe sou Achiv Nasyonal Ayiti (ANH), yon enstitisyon ki sou kont Minist\u00e8 Kilti, ki pa gen manda, p\u00e8son\u00e8l oswa finansman ki neses\u00e8 pou jere yon rejis sivil aktif. Rezilta a se reta kwonik nan tretman dosye yo, mank kontw\u00f2l sou ofisye lokal yo ak vilnerabilite devan fo dokiman.",
+      "p2": "Nou pwopoze kreye yon nouvo enstitisyon: Direksyon Nasyonal Rejis Sivil ak Idantite (DNRCI), ki ta sou kont Minist\u00e8 Jistis e ki ta responsab s\u00e8lman anrejistreman, kons\u00e8vasyon ak jesyon ak nesans, ak maryaj ak ak lanm\u00f2 sou tout teritwa nasyonal la."
+    },
+    "section3": {
+      "title": "Kijan li \u00f2ganize sou tout teritwa a",
+      "p1": "DNRCI ta \u00f2ganize sou kat nivo, selon divizyon administratif Ayiti. Nan P\u00f2toprens, gen Sy\u00e8j Santral la, ki responsab administrasyon nasyonal la ak platf\u00f2m echanj done a, san li pa bay s\u00e8vis dir\u00e8k pou piblik la. Nan chak nan 10 depatman peyi a, gen yon Biwo Rejis Sivil Depatmantal.",
+      "p2": "Nesans ak lanm\u00f2 anrejistre dir\u00e8kteman kote yo rive: lopital ak sant sante yo gen p\u00e8son\u00e8l DNRCI ki la pou anrejistre tibebe a anvan li kite sant medikal la, av\u00e8k objektif pou kouvri omwen 80% nan nesans nan peyi a atrav\u00e8 kanal sa a. Nan z\u00f2n riral ki pa gen kouv\u00e8ti lopital, inite mobil yo kouvri nesans ak lanm\u00f2 ki f\u00e8t andey\u00f2 sant sante.",
+      "p3": "Biwo Rejis Sivil Depatmantal la konsantre sou sa ki vr\u00e8man mande prezans fizik: maryaj, ansanm ak ka eksepsyon\u00e8l ki pa t kapab rezoud nan lopital la oswa av\u00e8k yon inite mobil. Av\u00e8k estrikti sa a, okenn sitwayen pa bezwen vwayaje pi lwen pase kapital pw\u00f2p depatman li pou s\u00e8vis sa yo."
+    },
+    "section4": {
+      "title": "Yon s\u00e8l bilding, plizy\u00e8 s\u00e8vis",
+      "p1": "Nan chak kapital depatmantal, branch DNRCI a pa ta yon bilding izole, men li ta f\u00e8 pati yon sant administratif pataje: menm bilding kote DNRCI, ONI (kat idantite), Direksyon Sikilasyon ak Polis Wouty\u00e8 (DCPR), pami l\u00f2t enstitisyon ki ta ajoute pita, ta ko-egziste anba menm do kay la men ak p\u00e8son\u00e8l apa. Se menm prensip ki d\u00e8y\u00e8 Maisons France Services an Frans, kote gouv\u00e8nman an konsolide plizy\u00e8 diz\u00e8n pwosedi administratif nan yon s\u00e8l pwen s\u00e8vis pa rejyon.",
+      "p2": "Sa vle di yon moun ki vin anrejistre yon maryaj kapab, nan menm bilding nan, f\u00e8 demann kat idantite li si s\u00e8tifika a deja pare, san li pa bezwen retounen yon l\u00f2t jou nan yon l\u00f2t kote nan vil la. Sa diminye tou depans enfrastrikti yo (yon s\u00e8l bilding pa depatman, olye de yon bilding pou chak enstitisyon) epi li fasilite sip\u00e8vizyon kwaze ant enstitisyon ki akty\u00e8lman fonksyone tankou zile apa."
+    },
+    "section5": {
+      "title": "Achitekti Teknik Pwopoze a",
+      "p1": "Yon sist\u00e8m ki gen ech\u00e8l sa a pa ka fonksyone ak yon s\u00e8l teknoloji; li bezwen bon konbinezon plizy\u00e8 eleman, chak youn ak yon w\u00f2l byen defini.",
+      "subsections": [
+        {
+          "subtitle": "Backend",
+          "text": "Yon stack pou antrepriz (ki pral defini pandan pwosesis ap\u00e8l d \u00f2f la) pou trete s\u00e8vis ki jere chak enskripsyon, selon menm nivo matirite ak sip\u00f2 alont\u00e8m sist\u00e8m idantite nan rejyon an deja itilize."
+        },
+        {
+          "subtitle": "Bazdone",
+          "text": "Yon bazdone nivo gouv\u00e8nman, ak chifreman nan nivo kol\u00f2n (AES-256) pou chan ki pi sansib yo, tankou s\u00e8tifika ak done byometrik, ki enstale sou pw\u00f2p s\u00e8v\u00e8 Leta. Pa janm sou cloud yon founis\u00e8 etranje."
+        },
+        {
+          "subtitle": "Ent\u00e8operabilite ant Enstitisyon yo (Mod\u00e8l X-Road)",
+          "text": "Olye de yon API ki f\u00e8t prese prese, koneksyon ant DNRCI, ONI ak DIE ta suiv yon mod\u00e8l kouch echanj sekirize nan stil X-Road, menm jan ak sa Estoni ak plis pase 25 peyi itilize. Chak enstitisyon kenbe pw\u00f2p bazdone pa li, men yo kominike atrav\u00e8 yon \"s\u00e8v\u00e8 sekirite\" ki siyen chak demann nimerikman, chifre kominikasyon bout-a-bout epi anrejistre chak echanj nan yon jounal ki pa ka modifye.",
+          "extra": "P\u00e8sonn pa jwenn aks\u00e8 ak done san yo pa kite yon tras ki ka verifye."
+        },
+        {
+          "subtitle": "Lojisy\u00e8l Enskripsyon (PWA)",
+          "text": "Nan lopital ak biwo depatmantal yo, p\u00e8son\u00e8l la itilize yon aplikasyon web pwogresif (PWA), ak f\u00f2m ki montre yon kesyon pa ekran epi ki fonksyone san koneksyon. Dosye yo sove lokalman epi yo senkronize depi gen siyal, yon bagay ki esansy\u00e8l pou z\u00f2n riral Ayiti yo. Aks\u00e8 mande yon PIN ak yon l\u00f2t met\u00f2d otantifikasyon ki an sekirite, ki rete pou evalye, epi sitwayen yo resevwa mizajou sou pwosedi yo atrav\u00e8 SMS oswa l\u00f2t met\u00f2d, av\u00e8k priyorite pou kanal ki pa mande koneksyon ent\u00e8n\u00e8t."
+        },
+        {
+          "subtitle": "Ki kote done yo ye, fizikman",
+          "text": "Sant Prensipal la nan P\u00f2toprens ap \u00f2ganize bazdone nasyonal konpl\u00e8 a epi l ap konekte ak rezo backbone ISP a atrav\u00e8 yon perim\u00e8t rezo sekirize, av\u00e8k sip\u00f2 en\u00e8ji renouvlab. Yon Sant Sovgad, kote egzak li rete pou det\u00e8mine, dwe jewografikman lwen P\u00f2toprens, selon menm prensip bank yo itilize: pa janm mete de sant done sou menm fay sismik oswa sou menm traj\u00e8 sikl\u00f2n. De sant yo senkronize an tan pr\u00e8ske rey\u00e8l: si P\u00f2toprens tonbe akoz yon sikl\u00f2n, tranblemannt\u00e8 oswa yon pann kouran pwolonje, sant sovgad la pran tout operasyon peyi a pandan y ap rezoud pwobl\u00e8m nan.",
+          "extra": "DNRCI dwe pwopriyet\u00e8 s\u00e8v\u00e8 yo; kontra yo dwe egzije, menm atrav\u00e8 lalwa, ke \"\u00f2dinat\u00e8, rezo, sant done ak bazdone a pral pwopriyete Rejis Sivil la\". Founis\u00e8 prive a s\u00e8lman bay lojisy\u00e8l ak py\u00e8s ekipman, ki enstale nan pw\u00f2p lokal Leta."
+        },
+        {
+          "subtitle": "Cloud Souvren Ibrid: Ni Tout Fizik, Ni Tout Cloud",
+          "text": "Sant Prensipal la ak Sant Sovgad la pa fonksyone tankou yon seri s\u00e8v\u00e8 izole: yo opere sou yon kouch cloud prive souvren, sa vle di teknoloji cloud ki deplwaye nan pw\u00f2p enfrastrikti Leta (tankou OpenStack), olye de s\u00e8v\u00e8 tradisyon\u00e8l san virtualizasyon. Sa bay sist\u00e8m nan twa kapasite ki n\u00f2malman disponib s\u00e8lman atrav\u00e8 s\u00e8vis cloud piblik, san done yo pa kite teritwa nasyonal la oswa kontw\u00f2l Leta.",
+          "extra": "Elastisite: kapasite pou ogmante resous yo otomatikman pandan pik demann, san yo pa bezwen achte nouvo ekipman chak fwa. Rekiperasyon rapid apre dezas: si etablisman P\u00f2toprens lan sibi yon ech\u00e8k katastwofik, sist\u00e8m nan ka rebati rapidman nan Sant Sovgad la, paske tout enfrastrikti a defini k\u00f2m k\u00f2d, olye de konfigirasyon many\u00e8l ki difisil pou repwodui rapidman. P\u00f2tab pou lavni: si yon jou li vin neses\u00e8 pou deplase soti nan yon founis\u00e8 kolokasyon pou ale nan yon l\u00f2t, kouch cloud prive a fasilite migrasyon sa a san yo pa bezwen reekri sist\u00e8m nan depi nan zewo."
+        }
+      ]
+    },
+    "section6": {
+      "title": "Soti nan Nesans rive nan Idantifikasyon Konpl\u00e8",
+      "p1": "Nan nesans, yon moun resevwa Nimewo Idantifikasyon Sivil Inik li (NICU) epi yo kreye yon dosye pou li nan bazdone nasyonal la, ak chan byometrik yo ki rete vid. Plizy\u00e8 ane apre, l\u00e8 moun sa a al pran kat idantite li pou premye fwa, ONI pa kreye yon nouvo dosye: li ouvri dosye ki deja egziste a (l ap ch\u00e8che l av\u00e8k NICU a) epi li ranpli foto, anprent dw\u00e8t, iris ak siyati nimerik la dir\u00e8kteman nan dosye sa a. Chak renouv\u00e8lman kat idantite oswa pwosedi pasp\u00f2 ap konsilte epi mete menm chan sa yo ajou, pandan sist\u00e8m nan kons\u00e8ve v\u00e8syon chanjman yo san li pa efase istwa a.",
+      "quote": "\"Done byometrik yo pa pou ONI k\u00f2m yon enstitisyon apa. Yo se pou moun nan.\"",
+      "p2": "Yo rete nan dosye inik moun nan nan bazdone DNRCI a. ONI s\u00e8lman gen p\u00e8misyon pou ekri nan chan byometrik yo e li pa janm pwopriyet\u00e8 yon bazdone paral\u00e8l. Sa atake dir\u00e8kteman pwobl\u00e8m Ayiti genyen kounye a: l\u00e8 de enstitisyon kenbe pw\u00f2p kopi menm done yo, kopi sa yo vin pa koresponn sou tan, e se la fwod f\u00e8t."
+    },
+    "section7": {
+      "title": "Pwosesis Enskripsyon an, Etap pa Etap",
+      "steps": [
+        {
+          "name": "Notifikasyon",
+          "desc": "Yon anplwaye DNRCI ki afekte s\u00e8lman nan lopital la (li pa yon p\u00e8son\u00e8l medikal yo prete) ranmase enf\u00f2masyon debaz sou nesans lan, tankou nimewo telef\u00f2n paran yo."
+        },
+        {
+          "name": "Deklarasyon",
+          "desc": "Dokiman sip\u00f2 yo ajoute: kat idantite paran yo, s\u00e8tifika medikal."
+        },
+        {
+          "name": "Validasyon Otomatik",
+          "desc": "Sist\u00e8m nan verifye si gen doublon ak si enf\u00f2masyon yo konsistan; ka ki ra yo voye pou revizyon many\u00e8l."
+        },
+        {
+          "name": "Enskripsyon ak Apwobasyon",
+          "desc": "Ofisye Biwo Rejis Sivil Depatmantal la apwouve dosye a, sist\u00e8m nan jenere NICU a epi li siyen s\u00e8tifika a nimerikman. Konfimasyon voye bay fanmi an atrav\u00e8 SMS."
+        },
+        {
+          "name": "Eskalad (Ka Eksepsyon\u00e8l S\u00e8lman)",
+          "desc": "Se s\u00e8lman ka kote yo sisp\u00e8k fwod, vr\u00e8 doublon oswa gen litij legal ki monte nan Sy\u00e8j Santral la, pou anpeche P\u00f2toprens vin yon blokaj pou chak pwosedi nan peyi a."
+        }
+      ],
+      "footer": "Menm estrikti a aplike pou maryaj ak lanm\u00f2."
+    },
+    "section8": {
+      "title": "Ki Moun ki Ka F\u00e8 Kisa",
+      "roles": [
+        {
+          "title": "Anplwaye DNRCI nan Lopital",
+          "allowed": [
+            "Notifye ak deklare nesans ak lanm\u00f2"
+          ],
+          "denied": [
+            "Pa kapab apwouve enskripsyon oswa jenere NICU"
+          ]
+        },
+        {
+          "title": "Ofisye Biwo Rejis Sivil Depatmantal",
+          "allowed": [
+            "Apwouve ak anrejistre ak yo, jenere NICU, trete maryaj"
+          ],
+          "denied": [
+            "Pa kapab rezoud ka fwod oswa litij legal"
+          ]
+        },
+        {
+          "title": "Sip\u00e8vizyon Sy\u00e8j Santral",
+          "allowed": [
+            "Odit, rezoud ka ki eskalade, apwouve gwo koreksyon"
+          ],
+          "denied": [
+            "Pa anrejistre nouvo ak yo dir\u00e8kteman"
+          ]
+        }
+      ],
+      "footer": "Chak aksyon rete nan yon dosye ki pa ka efase, ki endike kiy\u00e8s ki f\u00e8 aksyon an, kil\u00e8 li f\u00e8t ak nan ki lopital oswa biwo li f\u00e8t. Jodi a ann Ayiti, sa pa posib pou verifye."
+    },
+    "section9": {
+      "title": "Poukisa Sa Mande yon Lalwa, Pa S\u00e8lman Teknoloji",
+      "quote": "\"Okenn platf\u00f2m nimerik, k\u00e8lkeswa jan li byen f\u00e8t, pa ka kanpe poukont li.\"",
+      "p1": "San yon lwa pou apiye l, DNRCI ta jis yon l\u00f2t aplikasyon, san otorite rey\u00e8l pou mande nenp\u00f2t moun konekte, kolabore oswa rann kont.",
+      "p2": "Nou pa pretann ekri t\u00e8ks legal final la isit la. Se travay jiris ak lejislat\u00e8 espesyalize, men nou ka montre kl\u00e8man ki eleman li ta dwe kouvri omwen:",
+      "points": [
+        "Kreye DNRCI f\u00f2m\u00e8lman k\u00f2m yon enstitisyon ki gen pw\u00f2p otorite legal li, apa de Achiv Nasyonal yo.",
+        "Bay enskripsyon nimerik val\u00e8 legal, pou yon s\u00e8tifika elektwonik gen menm pwa legal ak yon s\u00e8tifika sou papye.",
+        "Etabli NICU k\u00f2m yon idantifyan inik ak obligatwa pou tout lavi.",
+        "Oblije koneksyon ant enstitisyon yo atrav\u00e8 lalwa, olye pou yo kite sa k\u00f2m yon bagay volont\u00e8.",
+        "Pwoteje done p\u00e8son\u00e8l ak done byometrik yo, av\u00e8k r\u00e8g kl\u00e8 sou kiy\u00e8s ki gen aks\u00e8 ak kisa.",
+        "Garanti enskripsyon nesans gratis, menm pou enskripsyon ki f\u00e8t anreta.",
+        "Defini yon mekanis finansman dirab: SIGEC, yon pwoj\u00e8 ki sanble an 2006, echwe pa paske lide a pa t bon, men akoz mank finansman kontiny\u00e8l."
+      ]
+    },
+    "section10": {
+      "title": "Pwobl\u00e8m P\u00e8sonn Pa Vle Gade: Milyon Moun ki Deja Egziste Jodi a",
+      "p1": "Tout sa ki anwo yo rezoud enskripsyon depi jou sist\u00e8m nan lanse. Men gen yon l\u00f2t pwobl\u00e8m ki menm jan an gwo: milyon Ayisyen ki deja egziste jodi a, ak ak nesans yo, ak maryaj yo oswa ak lanm\u00f2 yo ki estoke nan liv papye nan k\u00e8k tribinal oswa nan Achiv Nasyonal yo. Achiv istorik sa a pa ka senpleman rete dey\u00f2 NICU a.",
+      "p2": "Nou pwopoze rezoud pwobl\u00e8m nan sou de fas an paral\u00e8l, selon mod\u00e8l Espay te itilize pou menm pwobl\u00e8m nan:",
+      "fronts": [
+        {
+          "name": "Fas 1: Dijitalizasyon Masif ak Pwogresif",
+          "text": "Liv fizik yo eskane epi yo estriktire, depatman pa depatman, olye pou yo f\u00e8 tout peyi a yon s\u00e8l kou, pandan yo bay priyorite ak z\u00f2n ki gen plis popilasyon oswa kote dokiman yo plis riske deteryore (tankou achiv tranblemannt\u00e8 2010 la te domaje)."
+        },
+        {
+          "name": "Fas 2: Dijitalizasyon sou Demann",
+          "text": "Pandan Fas 1 ap avanse, nenp\u00f2t sitwayen ki bezwen yon ansyen s\u00e8tifika pou yon pwosedi ka mande l, epi nan moman sa a yo dijitalize l, valide l epi yo ba li NICU li imedyatman, san li pa bezwen tann se tou pa rejyon li a rive."
+        }
+      ],
+      "mitigationTitle": "Etandone demann pou dokiman pou rezon migrasyon tr\u00e8 wo ann Ayiti, yon ogmantasyon nan demann pasp\u00f2 ka mete tw\u00f2p chay sou dezy\u00e8m fas sa a. Pou evite sa:",
+      "mitigations": [
+        "Chak Biwo Rejis Sivil Depatmantal trete pw\u00f2p demann pa li yon fason desantralize (tout bagay pa f\u00e8t nan P\u00f2toprens).",
+        "Demann yo antre nan yon keu travay ak kapasite elastik, sa ki p\u00e8m\u00e8t yo ajoute p\u00e8son\u00e8l tanpor\u00e8 pandan moman gwo demann.",
+        "Fas 1 bay priyorite ak achiv ki gen plis chans pou yo mande yo byento.",
+        "Sitwayen yo resevwa yon tan datant rey\u00e8l atrav\u00e8 SMS, im\u00e8l oswa l\u00f2t kanal ki disponib selon ka a, pou yo pa bezwen chaje biwo fizik yo.",
+        "Chak s\u00e8tifika ki soti nan achiv istorik la epi ki dijitalize pase nan menm mot\u00e8 deteksyon doublon ak nouvo sist\u00e8m nan. Yon dosye ki gen plizy\u00e8 diz\u00e8n ane ka genyen moun ki te anrejistre de fwa oswa enf\u00f2masyon ki pa konpl\u00e8, epi ka ki pa kl\u00e8 yo monte nan Sy\u00e8j Santral la."
+      ]
+    },
+    "section11": {
+      "title": "Pouvwa pa Chanje Lannuit",
+      "quote": "\"Transfere fonksyon rejis sivil la soti nan ANH pou ale nan nouvo DNRCI a pa s\u00e8lman yon chanjman teknik. Se yon transf\u00e8 pouvwa enstitisyon\u00e8l.\"",
+      "p1": "Eksperyans l\u00f2t peyi yo montre enstitisyon ki deja egziste yo ka reziste l\u00e8 yo p\u00e8di kontw\u00f2l sou pw\u00f2p bazdone yo. Se pout\u00e8t sa nou pwopoze yon tranzisyon pwogresif: pandan yon pery\u00f2d ko-egzistans lalwa ap defini, ANH kontinye kenbe liv orijinal fizik yo k\u00f2m yon pati lejitim nan w\u00f2l istorik li, pandan DNRCI ap konstwi bazdone aktif la apati kopi dijitalize yo. P\u00e8son\u00e8l biwo lokal yo kapab chwazi transfere nan nouvo enstitisyon an olye pou yo ranplase yo."
+    },
+    "section12": {
+      "title": "Kiy\u00e8s k ap Peye pou Sa, yon Fason Dirab",
+      "p1": "Nou pwopoze pou lalwa etabli yon finansman kwaze: yon pousantaj fiks nan fr\u00e8 yo deja chaje pou pasp\u00f2 ak renouv\u00e8lman kat idantite ta resevwa yon afektasyon legal (pa yon desizyon diskresyon\u00e8 ONI oswa DIE) nan yon fon espesifik ki finanse enskripsyon nesans gratis ak dijitalizasyon achiv istorik la. L\u00e8 yo etabli sa nan lalwa, olye pou se yon transf\u00e8 volont\u00e8 ant enstitisyon, sa diminye friksyon politik ki ka leve l\u00e8 yo mande yon l\u00f2t enstitisyon bay yon pati nan revni li."
+    },
+    "section13": {
+      "title": "Risk Nou Pap Kache",
+      "p1": "Pwopozisyon sa a pa sipoze kondisyon ki neses\u00e8 pou egzekite l egziste jodi a. Se yon baz konsepsyon ki f\u00e8t pou moman kont\u00e8ks la ap p\u00e8m\u00e8t li. Men, nenp\u00f2t evalyasyon serye dwe konsidere:",
+      "risks": [
+        {
+          "title": "Kontinwite Enstitisyon\u00e8l",
+          "description": "San yon mekanis finansman ki siviv chanjman gouv\u00e8nman, sa riske repete istwa SIGEC la."
+        },
+        {
+          "title": "Depandans sou yon s\u00e8l Founis\u00e8 Teknoloji",
+          "description": "Se pout\u00e8t sa transf\u00e8 konesans ak yon kloz sou pwopriyet\u00e8 done yo enp\u00f2tan."
+        },
+        {
+          "title": "Adopsyon Enstitisyon\u00e8l ki Ralanti",
+          "description": "Yon lwa ak yon platf\u00f2m pa garanti ANH, ONI, DIE oswa l\u00f2t enstitisyon ki kons\u00e8ne yo pral kolabore touswit."
+        },
+        {
+          "title": "Kondisyon Sekirite ak Gouv\u00e8nans",
+          "description": "Deplwaman p\u00e8son\u00e8l ak enfrastrikti sou tout teritwa a depann de yon nivo minim\u00f2m estabilite, yon fakt\u00e8 ki pa anba kontw\u00f2l okenn pwopozisyon teknik."
+        },
+        {
+          "title": "Vilnerabilite Fizik nan Bor Rezo yo",
+          "description": "Yon apar\u00e8y yo v\u00f2l\u00e8 nan yon inite mobil riral kapab s\u00e8vi k\u00f2m pwen antre si yo pa sekirize l byen. Mitigasyon: administrasyon aleka ak kapasite pou efase done apar\u00e8y la si yo v\u00f2l\u00e8 l, chifreman lokal, epi pa gen okenn apar\u00e8y teren ki kenbe yon kopi konpl\u00e8 bazdone nasyonal la."
+        },
+        {
+          "title": "Kenbe Talan Teknik Lokal",
+          "description": "Kenbe pw\u00f2p s\u00e8v\u00e8 yo mande p\u00e8son\u00e8l ki resevwa bon f\u00f2masyon, men yo ka emigre. Mitigasyon an gen ladan yon chemen kary\u00e8 teknik nan DNRCI, sal\u00e8 konpetitif ak s\u00e8tifikasyon rekon\u00e8t."
+        }
+      ],
+      "footer": "Objektif mete risk sa yo non se pa dekouraje pwopozisyon an, men pou montre kl\u00e8man nou konsidere l k\u00f2m yon konsepsyon referans."
+    },
+    "section14": {
+      "title": "Kijan N ap Mezire Siks\u00e8",
+      "kpis": [
+        "Kouv\u00e8ti enskripsyon: pousantaj nesans ki anrejistre nan premye 72 \u00e8dtan yo.",
+        "Tan tretman: soti nan sem\u00e8n oswa mwa (jan OCNH rap\u00f2te sa jodi a) pou rive nan k\u00e8k jou.",
+        "Rediksyon biwo ki pa aktif: soti nan ka tankou Terre Neuve oswa Site Sol\u00e8y pou rive nan yon kantite biwo operasyon\u00e8l ki fikse k\u00f2m objektif.",
+        "Adopsyon NICU: pousantaj popilasyon ki gen yon idantifyan inik aktif.",
+        "Ent\u00e8koneksyon rey\u00e8l: kantite demann ki reyisi ant enstitisyon yo, k\u00f2m pr\u00e8v yo vr\u00e8man kominike olye yo fonksyone an paral\u00e8l."
+      ]
+    },
+    "section15": {
+      "title": "Yon F\u00e8y Wout, San Nou Pa Envante Chif",
+      "p1": "Nou pa defini kantite lajan paske sa ta dwe soti nan yon etid posibilite f\u00f2m\u00e8l, men nou deklare l\u00f2d konstriksyon an:",
+      "phases": [
+        {
+          "name": "Faz 0: Lalwa an Premye",
+          "text": "Apwobasyon lwa ki kreye DNRCI, defini NICU ak fon finansman kwaze a. Pa gen okenn eleman teknik ki konstwi anvan sa: san otorite legal, platf\u00f2m nan pa gen okenn mwayen pou f\u00f2se enstitisyon yo ent\u00e8konekte."
+        },
+        {
+          "name": "Faz 1: S\u00e8v\u00e8 an Premye",
+          "text": "Konstriksyon Sant Prensipal la, aplikasyon kouch echanj X-Road la, ak yon pil\u00f2t kontwole nan yon kantite limite lopital nan yon s\u00e8l depatman."
+        },
+        {
+          "name": "Faz 2: Apre sa",
+          "text": "Ekspansyon mod\u00e8l valide a nan 9 l\u00f2t depatman yo, deplwaman inite mobil nan z\u00f2n riral yo, konstriksyon Sant Sovgad la, epi k\u00f2mansman dijitalizasyon istorik la sou de fas li yo."
+        }
+      ]
+    },
+    "disclaimer": "Pwopozisyon sa a se rezilta rech\u00e8ch yon gwoup endepandan pwofesyon\u00e8l ayisyen nan teknoloji (lokal ak dyaspora), san eksperyans f\u00f2m\u00e8l nan politik piblik, finansman ent\u00e8nasyonal oswa dwa ayisyen. Li pa pretann se yon plan egzekisyon imedya oswa yon dokiman final: se yon baz konsepsyon teknik ak enstitisyon\u00e8l, ki bati apati rech\u00e8ch serye ak konparezon ent\u00e8nasyonal ki ka verifye, pou \u00f2ganizasyon, enstitisyon oswa espesyalis ki gen plis eksperyans ka s\u00e8vi av\u00e8 l k\u00f2m yon pwen depa, korije l epi adapte l selon kont\u00e8ks la ak moman peyi a ap trav\u00e8se."
+  }
+}
