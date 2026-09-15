@@ -111,6 +111,17 @@ export function getLocalizedProposalContent(
   return { title, leadTitle, summary };
 }
 
+export function getProposalFullContent(
+  slug: string,
+  lang: SupportedLanguage = defaultLang
+): Record<string, any> {
+  const slugDicts = proposalContentDicts[slug];
+  if (!slugDicts) return {};
+  const target = slugDicts[lang] ?? {};
+  const fallback = slugDicts[defaultLang] ?? {};
+  return (target && target.sections) ? target : fallback;
+}
+
 export function getLocalizedPath(path: string, lang: SupportedLanguage = defaultLang): string {
   const clean = path.startsWith('/') ? path : `/${path}`;
   const stripped = clean.replace(/^\/(en|fr|ht)(\/|$)/, '/');

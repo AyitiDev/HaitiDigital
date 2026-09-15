@@ -1,5 +1,259 @@
 {
-  "title": "Digital Civil Registry",
-  "leadTitle": "Towards a Digital Civil Registry: Haiti's first step toward technological sovereignty",
-  "summary": "A centralized, interoperable digital identity system to end under-registration and allow citizens to handle official procedures securely from anywhere"
+  "title": "Civil Registration in Haiti: Why It Fails and How to Rebuild It from Scratch",
+  "leadTitle": "Civil Registration in Haiti: Why It Fails and How to Rebuild It from Scratch",
+  "summary": "We propose creating a new institution dedicated exclusively to civil registry, with a technological architecture proven in other countries, and we explain what a law would need to make it possible, without pretending to have all the answers.",
+  "meta": {
+    "author": "Ayiti Dijital Team",
+    "category": "Digital Government Proposal",
+    "readingTime": "14 min read"
+  },
+  "executiveSummary": "85% of Haiti's civil status officers were appointed in 1995, and many are no longer in a position to exercise their duties. The current system, divided among institutions with no clear mandate, leaves thousands of people without a birth certificate, without an ID card, and without access to basic rights. We propose creating a new institution dedicated exclusively to civil registry, with a technological architecture proven in other countries, and we explain what a law would need to make it possible, without pretending to have all the answers.",
+  "diagrams": {
+    "governance": {
+      "label": "Diagram 1: Institutional Governance Flowchart"
+    },
+    "architecture": {
+      "label": "Diagram 3: Server & Network Architecture Flowchart"
+    },
+    "workflow": {
+      "label": "Diagram 2: Registration Process State Diagram"
+    }
+  },
+  "sections": {
+    "section1": {
+      "title": "The Silent Collapse of the Haitian Civil Registry",
+      "p1": "The civil status system in Haiti is currently undergoing a documented structural crisis. A report by the Organization of Citizens for a New Haiti (OCNH), published in March 2026, reveals that nearly 85% of active civil status officers were appointed in 1995, and many are no longer able to work due to age or vision problems, leaving an aging workforce to sustain the legal identity of an entire country.",
+      "p2": "OCNH's field investigation confirms what many families are already experiencing firsthand: several civil registry offices operate irregularly or are completely closed. The Terre Neuve office in Artibonite has been closed since July 2024, and in Cité Soleil in the West, the office has been inactive since June 2021, forcing citizens to travel all the way to Delmas to get a document as basic as a birth certificate.",
+      "p3": "The consequences are not abstract: children and students cannot register for official exams, young people are left off voter registration lists, the difficulty of proving filiation or legal identity complicates access to justice, and the issuance of passports is paralyzed, blocking the migration plans of thousands of people.",
+      "p4": "This is not a new problem. Back in 2008, the case of Ericq Pierre, then a candidate for Prime Minister, exposed the problem at the highest level: not even he could obtain his own grandparents' birth certificate to prove his Haitian origin. A United Nations report on the 2021 earthquake documented that the structures in charge of the civil registry \"exist in name only\" due to lack of budget, leaving local officers operating without any real control.",
+      "sourcesTitle": "Sources:",
+      "sources": [
+        {
+          "name": "OCNH reveals civil registry crisis, 85% of officers appointed in 1995",
+          "url": "https://lereliefhaiti.com/articles/haiti-civil-registry-system-in-crisis-threatens-citizens-fundamental-rights"
+        },
+        {
+          "name": "Le Nouvelliste reports on OCNH findings on system weaknesses, March 2026",
+          "url": "https://lenouvelliste.com/en/article/266348/ocnh-report-exposes-new-weaknesses-in-haitis-civil-registry-system"
+        },
+        {
+          "name": "Camille Occius (OCNH) warns of statelessness risk in rural areas",
+          "url": "https://lenouvelliste.com/en/article/262527/camille-occius-warns-of-a-deepening-civil-registry-crisis-in-haiti"
+        },
+        {
+          "name": "Access to civil status documents: a fundamental right at risk",
+          "url": "https://www.lereliefhaiti.com/en/articles/access-to-civil-status-documents-in-haiti-ocnh-denounces-a-fundamental-right-in-peril"
+        }
+      ]
+    },
+    "section2": {
+      "title": "The Proposal: An Institution Born for This, and Only This",
+      "p1": "Today, part of the civil registry function falls upon the National Archives of Haiti (ANH), an institution attached to the Ministry of Culture, lacking the mandate, personnel, or funding to manage a living civil registry. The result is chronic delays in processing files, a lack of control over local officers, and vulnerability to document fraud.",
+      "p2": "We propose creating a new institution: the National Directorate of Civil Registry and Identity (DNRCI), attached to the Ministry of Justice, exclusively responsible for the registration, conservation, and management of birth, marriage, and death certificates throughout the national territory."
+    },
+    "section3": {
+      "title": "How It Is Organized in the Territory",
+      "p1": "The DNRCI is organized into four levels, following Haiti's actual administrative division. In Port au Prince operates the Central Headquarters, in charge of national administration and the data exchange platform, without direct public service. In each of the country's 10 departments, a Departmental Civil Office is established.",
+      "p2": "Births and deaths are registered directly at the point where they occur: hospitals and health centers have dedicated DNRCI personnel to register the newborn before they leave the medical center, with the goal of covering at least 80% of the country's births through this channel. In rural areas without hospital coverage, mobile units cover births and deaths outside of a health center.",
+      "p3": "The Departmental Civil Office is then focused on what actually requires physical presence: marriage, and exceptional cases that could not be resolved at the hospital or with a mobile unit. With this structure, no citizen has to travel beyond the capital of their own department."
+    },
+    "section4": {
+      "title": "A Single Building, Multiple Windows",
+      "p1": "In each departmental capital, the DNRCI branch would not be an isolated building, but part of a shared administrative center: the same building where the DNRCI, the ONI (identity card), the Directorate of Traffic and Highway Police (DCPR), among others added later, coexist under one roof but with separate personnel. It is the same principle behind Maisons France Services in France, where the government consolidated dozens of procedures into a single service point per region.",
+      "p2": "This means that someone going to register a marriage can, in the same building, process their ID card if the certificate is already ready, without returning another day to another point in the city. It also reduces infrastructure costs (a single building per department, not one per institution) and facilitates cross supervision between institutions that currently operate as islands."
+    },
+    "section5": {
+      "title": "Proposed Technical Architecture",
+      "p1": "A system of this scale does not work with a single technology, but with the correct combination of several pieces, each with a defined role.",
+      "subsections": [
+        {
+          "subtitle": "Backend",
+          "text": "An enterprise grade stack (to be defined in the bidding process) for services processing each registration, following the same standard of maturity and long term support already used by identity systems in the region."
+        },
+        {
+          "subtitle": "Database",
+          "text": "A government grade database, with column level encryption (AES 256) for the most sensitive fields, including certificates and biometric data, installed on the State's own servers. Never in a foreign provider's cloud."
+        },
+        {
+          "subtitle": "Interoperability Between Institutions (X Road Model)",
+          "text": "Instead of a makeshift API, the connection between DNRCI, ONI, and DIE follows an X Road style secure exchange layer model, the same used by Estonia and more than 25 countries. Each institution maintains its own database, but they communicate through a \"security server\" that digitally signs each query, encrypts communication end to end, and records each exchange in an immutable log.",
+          "extra": "No one accesses data without leaving a verifiable trace"
+        },
+        {
+          "subtitle": "Registration Software (PWA)",
+          "text": "In hospitals and departmental offices, staff use a progressive web app (PWA), with one question per screen forms and offline functionality. Records are saved locally and synchronized as soon as there is a signal, something key for Haiti's rural areas. Access requires a PIN and an additional secure authentication method to be evaluated, and citizens receive updates on their procedure via SMS or other methods, prioritizing channels that do not require an internet connection."
+        },
+        {
+          "subtitle": "Where the Data Lives, Physically",
+          "text": "The Primary Center in Port au Prince hosts the complete national database and connects to the ISP backbone via a secure network perimeter, backed by renewable energy. A Backup Center, whose exact location is to be determined, must be geographically far from Port au Prince, following the same principle used by banks: never two data centers on the same seismic fault or hurricane trajectory. The two centers synchronize in near real time: if Port au Prince goes down due to a hurricane, earthquake, or prolonged power outage, the backup center assumes full operation of the country while the failure is resolved.",
+          "extra": "The DNRCI must be the owner of the servers; the contracts must require, even by law, that \"computers, network, data center, and database will be owned by the Civil Registry\". The private provider only delivers software and hardware, installed in the State's own premises."
+        },
+        {
+          "subtitle": "Hybrid Sovereign Cloud: Not All Physical, Not All Cloud",
+          "text": "The Primary Center and the Backup Center do not operate as simple isolated servers: they run on a sovereign private cloud layer, meaning cloud technology deployed within the State's own infrastructure (such as OpenStack), not on traditional servers without virtualization. This gives the system three capabilities normally only available through public cloud services, without leaving national territory or state control",
+          "extra": "Elasticity: capacity to scale resources automatically during demand spikes, without purchasing new hardware each time. Rapid disaster recovery: if the Port-au-Prince facility suffers a catastrophic failure, the system can be rebuilt quickly at the Backup Center, because all infrastructure is defined as code, not as manual configurations that are impossible to replicate quickly. Future portability: if at some point it becomes necessary to migrate from one colocation provider to another, the private cloud layer facilitates that migration without rewriting the system from scratch"
+        }
+      ]
+    },
+    "section6": {
+      "title": "From Birth to Complete Identification",
+      "p1": "At birth, a person receives their Unique Civil Identification Number (NICU) and a file in the national database, with biometric fields empty. Years later, when that person first goes to get their ID card, ONI does not create a new file: it opens the existing one (searching by their NICU) and fills in photo, fingerprints, iris, and digitized signature right there. Each ID renewal or passport procedure queries and updates those same fields, versioning changes without deleting history.",
+      "quote": "\"The biometric data does not belong to ONI as a separate institution. It belongs to the person\"",
+      "p2": "It lives in their unique file within the DNRCI database. ONI only has write permission over biometric fields and is never the owner of a parallel database. This directly attacks the problem Haiti currently faces: when two institutions maintain their own copy of the same data, those copies desynchronize over time, and that is where fraud is born."
+    },
+    "section7": {
+      "title": "The Registration Process, Step by Step",
+      "steps": [
+        {
+          "name": "Notification",
+          "desc": "A DNRCI employee stationed exclusively in the hospital (not loaned medical staff) captures basic birth data, including the parents' contact phone number"
+        },
+        {
+          "name": "Declaration",
+          "desc": "Supporting documents are attached: parents' ID cards, medical certificate"
+        },
+        {
+          "name": "Automatic Validation",
+          "desc": "The system checks for duplicates and consistency; rare cases are flagged for manual review"
+        },
+        {
+          "name": "Registration and Approval",
+          "desc": "The Departmental Civil Office officer approves, the system generates the NICU, and digitally signs the certificate. Confirmation is sent via SMS to the family"
+        },
+        {
+          "name": "Escalation (Exceptional Cases Only)",
+          "desc": "Only suspected fraud, real duplicates, or legal disputes go up to Central Headquarters, preventing Port au Prince from being a bottleneck for every procedure in the country"
+        }
+      ],
+      "footer": "The same skeleton applies to marriage and death"
+    },
+    "section8": {
+      "title": "Who Can Do What",
+      "roles": [
+        {
+          "title": "DNRCI Employee in the Hospital",
+          "allowed": ["Notify and declare births and deaths"],
+          "denied": ["Cannot approve registration or generate the NICU"]
+        },
+        {
+          "title": "Departmental Civil Office Officer",
+          "allowed": ["Approve and register certificates, generate the NICU, process marriages"],
+          "denied": ["Cannot resolve fraud cases or legal disputes"]
+        },
+        {
+          "title": "Central Headquarters Supervision",
+          "allowed": ["Audit, resolve escalated cases, approve major corrections"],
+          "denied": ["Does not register new certificates directly"]
+        }
+      ],
+      "footer": "Every action remains in an unerasable record that states who performed each action, when, and from which hospital or office. Today in Haiti, this is impossible to verify"
+    },
+    "section9": {
+      "title": "Why This Requires a Law, Not Just Technology",
+      "quote": "\"No digital platform, no matter how well designed, can stand alone\"",
+      "p1": "Without a law backing it, the DNRCI would be just another app, lacking real authority to demand that anyone connect, cooperate, or be accountable.",
+      "p2": "We do not claim to draft the final legal text here. That is up to specialized jurists and legislators, but we can make clear what elements it should cover at a minimum:",
+      "points": [
+        "Formally create the DNRCI as an institution with its own legal authority, separate from the National Archives.",
+        "Give legal validity to digital registration, so that an electronic certificate has the same legal weight as a paper one.",
+        "Establish the NICU as a unique and mandatory lifetime identifier.",
+        "Mandate by law the interconnection between institutions, rather than leaving it as something voluntary.",
+        "Protect personal and biometric data, with clear rules on who accesses what.",
+        "Guarantee free birth registration, even late registrations.",
+        "Define a sustained financing mechanism: SIGEC, a similar 2006 project, failed not from a lack of a good idea, but from a lack of continuous funding."
+      ]
+    },
+    "section10": {
+      "title": "The Problem No One Wants to Look At: The Millions That Already Exist Today",
+      "p1": "Everything above resolves registration from the day the system goes live. But an equally large problem remains: the millions of Haitians who already exist today, with their certificate stored in a paper book in some tribunal or the National Archives. That historical archive cannot simply be left out of the NICU.",
+      "p2": "We propose solving it on two parallel fronts, following the model Spain used for the same problem:",
+      "fronts": [
+        {
+          "name": "Front 1: Massive and Progressive Digitization",
+          "text": "Physical books are scanned and structured, department by department, not the whole country at once, prioritizing areas of higher population or greater document deterioration (such as archives damaged by the 2010 earthquake)"
+        },
+        {
+          "name": "Front 2: On Demand Digitization",
+          "text": "While Front 1 advances, any citizen needing an old certificate for a procedure can request it, and at that moment it is digitized, validated, and receives their NICU immediately, without waiting for their region's turn"
+        }
+      ],
+      "mitigationTitle": "Given the extremely high demand for documents for migratory purposes in Haiti, a spike in passport requests could saturate this second front. To avoid it:",
+      "mitigations": [
+        "Each Departmental Civil Office processes its own requests in a decentralized manner (not everything in Port au Prince)",
+        "Requests enter a work queue with elastic capacity, allowing temporary personnel to be added during high demand moments",
+        "Front 1 prioritizes archives with the highest probability of being requested soon",
+        "Citizens receive a real waiting time via SMS, email, or other available channels depending on the case, so as not to saturate physical offices",
+        "Each digitized certificate from the historical archive goes through the same duplicate detection engine of the new system. A decades old record may have people registered twice or with incomplete data, and those ambiguous cases are escalated to Central Headquarters"
+      ]
+    },
+    "section11": {
+      "title": "Power Does Not Shift Overnight",
+      "quote": "\"Transferring the civil registry function from ANH to the new DNRCI is not just a technical change. It is an institutional power shift\"",
+      "p1": "The experience of other countries shows that existing institutions resist losing control of their own databases. That is why we propose a gradual transition: during a period of coexistence defined by law, ANH retains physical custody of the original books as its legitimate historical role, while DNRCI builds the living database from digitized copies. Local office personnel can choose to transfer to the new institution instead of being replaced."
+    },
+    "section12": {
+      "title": "Who Pays for This, Sustainably",
+      "p1": "We propose that the law establish a cross subsidy: a fixed percentage of the fees already charged for passports and ID renewals is allocated, by legal mandate (not by discretionary decision of ONI or DIE), to a specific fund that finances free birth registrations and the digitization of the historical archive. By establishing it in law and not as a voluntary transfer between institutions, political friction from asking another institution to give up part of its revenue is reduced."
+    },
+    "section13": {
+      "title": "Risks We Will Not Hide",
+      "p1": "This proposal does not assume that the conditions to execute it exist today. It is a design base intended for when the context permits. Even so, any serious evaluation should consider:",
+      "risks": [
+        {
+          "title": "Institutional Continuity",
+          "description": "Without a funding mechanism that survives changes of government, this risks repeating the history of SIGEC"
+        },
+        {
+          "title": "Dependency on a Single Technology Provider",
+          "description": "Hence the importance of a knowledge transfer and data ownership clause"
+        },
+        {
+          "title": "Slow Institutional Adoption",
+          "description": "A law and a platform do not guarantee that ANH, ONI, DIE, or other institutions involved will cooperate immediately"
+        },
+        {
+          "title": "Security and Governance Conditions",
+          "description": "The deployment of personnel and infrastructure throughout the territory depends on minimum conditions of stability, a factor outside the control of any technical proposal"
+        },
+        {
+          "title": "Physical Vulnerability at Network Edges",
+          "description": "A stolen device in a rural mobile unit could be an entry point if not well secured. Mitigation: remote administration with wipe capability on theft, local encryption, and no field device holding a complete copy of the national database"
+        },
+        {
+          "title": "Retention of Local Technical Talent",
+          "description": "Maintaining own servers requires trained personnel who might emigrate. Mitigation involves a technical career path within DNRCI, with competitive salaries and recognized certifications"
+        }
+      ],
+      "footer": "The goal of naming these risks is not to discourage the proposal, but to make clear that we understand it as a reference design"
+    },
+    "section14": {
+      "title": "How Success Would Be Measured",
+      "kpis": [
+        "Registration coverage: percentage of births registered within the first 72 hours",
+        "Processing time: from weeks or months (as OCNH reports today) to days",
+        "Reduction of inactive offices: from cases like Terre Neuve or Cité Soleil to a target number of operational offices",
+        "NICU adoption: percentage of population with an active unique identifier",
+        "Real interconnection: number of successful queries between institutions, as evidence that they truly communicate and do not just operate in parallel"
+      ]
+    },
+    "section15": {
+      "title": "A Roadmap, Without Inventing Figures",
+      "p1": "We do not define amounts because that corresponds to a formal feasibility study, but we do declare the construction sequence:",
+      "phases": [
+        {
+          "name": "Phase 0: Law First",
+          "text": "Approval of the law creating DNRCI, defining the NICU and the cross subsidy fund. No technical component is built before: without legal authority, the platform has nothing to compel anyone to interconnect"
+        },
+        {
+          "name": "Phase 1: Servers First",
+          "text": "Construction of the Primary Center, implementation of the X Road exchange layer, and a controlled pilot in a reduced number of hospitals in a single department"
+        },
+        {
+          "name": "Phase 2: Afterwards",
+          "text": "Expansion of the validated model to the remaining 9 departments, deployment of rural mobile units, construction of the Backup Center, and start of historical digitization on its two fronts"
+        }
+      ]
+    },
+    "disclaimer": "This proposal is the result of research by an independent group of Haitian technology professionals (local and diaspora), without formal experience in public policy, international financing, or Haitian law. It does not pretend to be an immediate execution plan or a final document: it is a technical and institutional design base, built from serious research and verifiable international comparisons, so that organizations, institutions, or specialists with more experience can take it as a starting point, correct it, and adapt it according to the context and moment the country is going through"
+  }
 }

@@ -1,0 +1,397 @@
+---
+import MermaidDiagram from '../../ui/MermaidDiagram.astro';
+import Icon from '../../ui/Icon.astro';
+import { getProposalFullContent, type SupportedLanguage } from '../../../i18n/utils';
+import { diagrams as mermaidCodes } from '../../../i18n/proposals/digital-civil-registry/diagrams';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const content = getProposalFullContent('digital-civil-registry', lang);
+const { executiveSummary, diagrams, sections } = content;
+---
+
+<div class="space-y-8 text-base leading-7 text-neutral-800 dark:text-neutral-200 my-8">
+
+  <!-- Executive Summary Box -->
+  {executiveSummary && (
+    <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/70 space-y-3">
+      <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+        <span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>
+        Executive Summary
+      </div>
+      <p class="text-neutral-700 dark:text-neutral-300 font-medium">
+        {executiveSummary}
+      </p>
+    </div>
+  )}
+
+  <!-- Section 1: The Silent Collapse -->
+  {sections?.section1 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section1.title}
+      </h2>
+      <p>{sections.section1.p1}</p>
+      <p>{sections.section1.p2}</p>
+      <p>{sections.section1.p3}</p>
+      <p>{sections.section1.p4}</p>
+
+      {sections.section1.sources && (
+        <div class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/30 space-y-2 mt-4">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+            {sections.section1.sourcesTitle}
+          </h3>
+          <ul class="space-y-1.5 text-xs text-neutral-600 dark:text-neutral-400">
+            {sections.section1.sources.map((src: any) => (
+              <li>
+                • <a href={src.url} target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">{src.name}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Section 2: The Proposal -->
+  {sections?.section2 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section2.title}
+      </h2>
+      <p>{sections.section2.p1}</p>
+      <p>{sections.section2.p2}</p>
+    </section>
+  )}
+
+  <!-- Section 3: Territory Organization & Diagram 1 -->
+  {sections?.section3 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section3.title}
+      </h2>
+      <p>{sections.section3.p1}</p>
+      <p>{sections.section3.p2}</p>
+      <p>{sections.section3.p3}</p>
+
+      {diagrams?.governance && (
+        <div class="my-6">
+          <MermaidDiagram
+            diagram={mermaidCodes.governance}
+            id="diagram-governance"
+            label={diagrams.governance.label}
+          />
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Section 4: Single Building -->
+  {sections?.section4 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section4.title}
+      </h2>
+      <p>{sections.section4.p1}</p>
+      <p>{sections.section4.p2}</p>
+    </section>
+  )}
+
+  <!-- Section 5: Proposed Technical Architecture & Diagram 3 -->
+  {sections?.section5 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section5.title}
+      </h2>
+      <p>{sections.section5.p1}</p>
+
+      {sections.section5.subsections && (
+        <div class="space-y-4 my-4">
+          {sections.section5.subsections.map((sub: any) => (
+            <div class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/50 space-y-1.5">
+              <h3 class="text-base font-bold text-neutral-950 dark:text-white">{sub.subtitle}</h3>
+              <p class="text-base leading-7 text-neutral-700 dark:text-neutral-300">{sub.text}</p>
+              {sub.extra && (
+                <p class="text-sm leading-6 text-neutral-500 dark:text-neutral-400 italic mt-1 font-medium">{sub.extra}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {diagrams?.architecture && (
+        <div class="my-6">
+          <MermaidDiagram
+            diagram={mermaidCodes.architecture}
+            id="diagram-architecture"
+            label={diagrams.architecture.label}
+          />
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Section 6: From Birth to Complete Identification -->
+  {sections?.section6 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section6.title}
+      </h2>
+      <p>{sections.section6.p1}</p>
+      {sections.section6.quote && (
+        <blockquote class="my-3 pl-4 border-l-2 border-blue-500 italic text-base leading-7 text-neutral-900 dark:text-neutral-100 font-semibold">
+          {sections.section6.quote}
+        </blockquote>
+      )}
+      <p>{sections.section6.p2}</p>
+    </section>
+  )}
+
+  <!-- Section 7: Registration Process Step by Step & Diagram 2 -->
+  {sections?.section7 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section7.title}
+      </h2>
+
+      {sections.section7.steps && (
+        <div class="space-y-3 my-4">
+          {sections.section7.steps.map((step: any, idx: number) => (
+            <div class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/60 flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
+                {idx + 1}
+              </span>
+              <div>
+                <h3 class="font-bold text-neutral-950 dark:text-white text-sm sm:text-base">{step.name}</h3>
+                <p class="text-base leading-7 text-neutral-600 dark:text-neutral-300 mt-0.5">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {sections.section7.footer && (
+        <p class="text-sm leading-6 text-neutral-500 dark:text-neutral-400 italic font-medium">{sections.section7.footer}</p>
+      )}
+
+      {diagrams?.workflow && (
+        <div class="my-6">
+          <MermaidDiagram
+            diagram={mermaidCodes.workflow}
+            id="diagram-workflow"
+            label={diagrams.workflow.label}
+          />
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Section 8: Who Can Do What -->
+  {sections?.section8 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section8.title}
+      </h2>
+
+      {sections.section8.roles && (
+        <div class="grid lg:grid-cols-3 gap-6 my-6">
+          {sections.section8.roles.map((role: any) => (
+            <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/40 shadow-sm flex flex-col gap-4">
+              <h3 class="font-bold text-neutral-950 dark:text-white text-base border-b border-neutral-100 dark:border-neutral-800/60 pb-3">{role.title}</h3>
+              
+              <div class="space-y-3 flex-1">
+                <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                  <div class="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center">
+                    <Icon name="check" class="w-3.5 h-3.5" />
+                  </div>
+                  Can Do
+                </div>
+                <div class="space-y-2 pl-1">
+                  {role.allowed && role.allowed.map((item: string) => (
+                    <div class="text-sm text-neutral-700 dark:text-neutral-300 font-medium flex items-start gap-2.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0 mt-2"></span>
+                      <span class="leading-relaxed">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div class="space-y-3 mt-2">
+                <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+                  <div class="w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-500/20 flex items-center justify-center">
+                    <Icon name="x" class="w-3.5 h-3.5" />
+                  </div>
+                  Cannot Do
+                </div>
+                <div class="space-y-2 pl-1">
+                  {role.denied && role.denied.map((item: string) => (
+                    <div class="text-sm text-neutral-700 dark:text-neutral-300 font-medium flex items-start gap-2.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-rose-500 flex-shrink-0 mt-2"></span>
+                      <span class="leading-relaxed">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {sections.section8.footer && (
+        <p class="text-sm leading-6 text-neutral-600 dark:text-neutral-400">{sections.section8.footer}</p>
+      )}
+    </section>
+  )}
+
+  <!-- Section 9: Why This Requires a Law -->
+  {sections?.section9 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section9.title}
+      </h2>
+      {sections.section9.quote && (
+        <blockquote class="my-2 pl-4 border-l-2 border-blue-500 italic text-base leading-7 text-neutral-900 dark:text-neutral-100 font-semibold">
+          {sections.section9.quote}
+        </blockquote>
+      )}
+      <p>{sections.section9.p1}</p>
+      <p>{sections.section9.p2}</p>
+      {sections.section9.points && (
+        <ul class="space-y-2 list-disc list-inside text-sm text-neutral-700 dark:text-neutral-300">
+          {sections.section9.points.map((pt: string) => (
+            <li>{pt}</li>
+          ))}
+        </ul>
+      )}
+    </section>
+  )}
+
+  <!-- Section 10: Millions That Already Exist Today -->
+  {sections?.section10 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section10.title}
+      </h2>
+      <p>{sections.section10.p1}</p>
+      <p>{sections.section10.p2}</p>
+
+      {sections.section10.fronts && (
+        <div class="grid sm:grid-cols-2 gap-4 my-4">
+          {sections.section10.fronts.map((f: any) => (
+            <div class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900">
+              <h3 class="font-bold text-neutral-950 dark:text-white text-sm mb-1">{f.name}</h3>
+              <p class="text-sm leading-6 text-neutral-600 dark:text-neutral-400">{f.text}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {sections.section10.mitigationTitle && (
+        <p class="font-semibold text-neutral-900 dark:text-white mt-4">{sections.section10.mitigationTitle}</p>
+      )}
+
+      {sections.section10.mitigations && (
+        <ul class="space-y-2 list-disc list-inside text-sm text-neutral-700 dark:text-neutral-300">
+          {sections.section10.mitigations.map((m: string) => (
+            <li>{m}</li>
+          ))}
+        </ul>
+      )}
+    </section>
+  )}
+
+  <!-- Section 11: Power Does Not Shift Overnight -->
+  {sections?.section11 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section11.title}
+      </h2>
+      {sections.section11.quote && (
+        <blockquote class="my-2 pl-4 border-l-2 border-blue-500 italic text-base leading-7 text-neutral-900 dark:text-neutral-100 font-semibold">
+          {sections.section11.quote}
+        </blockquote>
+      )}
+      <p>{sections.section11.p1}</p>
+    </section>
+  )}
+
+  <!-- Section 12: Who Pays for This -->
+  {sections?.section12 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section12.title}
+      </h2>
+      <p>{sections.section12.p1}</p>
+    </section>
+  )}
+
+  <!-- Section 13: Risks We Will Not Hide -->
+  {sections?.section13 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section13.title}
+      </h2>
+      <p>{sections.section13.p1}</p>
+      {sections.section13.risks && (
+        <div class="grid sm:grid-cols-2 gap-4 my-4">
+          {sections.section13.risks.map((risk: any) => (
+            <div class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/50">
+              <div class="font-bold text-neutral-950 dark:text-white text-sm mb-1">{risk.title}</div>
+              <div class="text-sm leading-6 text-neutral-600 dark:text-neutral-400">{risk.description}</div>
+            </div>
+          ))}
+        </div>
+      )}
+      {sections.section13.footer && (
+        <p class="text-sm leading-6 text-neutral-500 dark:text-neutral-400 italic font-medium">{sections.section13.footer}</p>
+      )}
+    </section>
+  )}
+
+  <!-- Section 14: How Success Would Be Measured -->
+  {sections?.section14 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section14.title}
+      </h2>
+      {sections.section14.kpis && (
+        <ul class="space-y-2 list-disc list-inside text-sm text-neutral-700 dark:text-neutral-300 font-medium">
+          {sections.section14.kpis.map((kpi: string) => (
+            <li>{kpi}</li>
+          ))}
+        </ul>
+      )}
+    </section>
+  )}
+
+  <!-- Section 15: Roadmap -->
+  {sections?.section15 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section15.title}
+      </h2>
+      <p>{sections.section15.p1}</p>
+      {sections.section15.phases && (
+        <div class="space-y-3 my-4">
+          {sections.section15.phases.map((phase: any) => (
+            <div class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/60">
+              <span class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">{phase.name}</span>
+              <p class="text-sm leading-6 text-neutral-600 dark:text-neutral-300 mt-1">{phase.text}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Disclaimer Footer -->
+  {sections?.disclaimer && (
+    <div class="p-5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 text-sm leading-6 text-neutral-600 dark:text-neutral-400 italic mt-8">
+      {sections.disclaimer}
+    </div>
+  )}
+
+</div>
