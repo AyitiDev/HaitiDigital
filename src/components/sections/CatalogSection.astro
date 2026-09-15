@@ -11,7 +11,7 @@ interface Props {
 const { lang = 'en' } = Astro.props;
 const t = useUi(lang);
 
-const proposals = getProposals();
+const proposals = getProposals(lang);
 const counts = getCategoryCounts();
 
 const categories = CATEGORIES_CONFIG.map((cat) => ({

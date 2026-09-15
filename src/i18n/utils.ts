@@ -14,7 +14,7 @@ export type SupportedLanguage = 'en' | 'fr' | 'ht';
 
 export const defaultLang: SupportedLanguage = 'en';
 
-export const activeLanguages: SupportedLanguage[] = ['en', 'fr'];
+export const activeLanguages: SupportedLanguage[] = ['en', 'fr', 'ht'];
 
 export const languages: Record<SupportedLanguage, { label: string; flag: string }> = {
   en: { label: 'English', flag: 'EN' },

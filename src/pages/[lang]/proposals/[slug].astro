@@ -9,7 +9,7 @@ import { useUi, useProposals, getLocalizedPath, activeLanguages, type SupportedL
 export function getStaticPaths() {
   const paths: { params: { lang: SupportedLanguage; slug: string }; props: { proposal: any } }[] = [];
   for (const lang of activeLanguages) {
-    const proposals = getProposals();
+    const proposals = getProposals(lang);
     for (const proposal of proposals) {
       paths.push({
         params: { lang, slug: proposal.slug },
@@ -21,7 +21,7 @@ export function getStaticPaths() {
 }
 
 const { lang, slug } = Astro.params as { lang: SupportedLanguage; slug: string };
-const proposal = Astro.props.proposal ?? getProposalBySlug(slug);
+const proposal = Astro.props.proposal ?? getProposalBySlug(slug, lang);
 
 if (!proposal) {
   return Astro.redirect(getLocalizedPath('/', lang));
