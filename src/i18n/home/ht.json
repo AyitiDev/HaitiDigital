@@ -23,7 +23,7 @@
   },
   "about": {
     "title": "Konsènan nou",
-    "description": "Nou pa ni yon ONG ni yon antite gouvènmantal fòmèl. Nou se yon kolektif enfòmèl enjenyè, devlopè ak ekspè IT, ini pa volonte pou ede Ayiti. Nou analize bezwen reyèl yo epi nou konsevwa achitekti teknik ki pare pou deplwaye, pandan nou bay ladrès priyorite devan biwokrasi.",
+    "description": "Nou pa ni yon ONG ni yon antite gouvènmantal fòmèl. Nou se yon kolektif enfòmèl enjenyè, devlopè ak ekspè IT, ini pa volonte pou ede Ayiti. Nou analize bezwen reyèl yo epi nou konsevwa achitekti teknik ki pare pou deplwaye, pandan nou bay ladrès priyorite devan biwokrasi",
     "networkVisualLabel": "Reprezantasyon vizyèl rezo IT a"
   },
   "catalog": {
@@ -53,27 +53,27 @@
     "step1": {
       "number": "01",
       "title": "Dyagnostik",
-      "description": "Nou analize pwosesis fizik ki egziste kounye a ak blokaj sistemik yo."
+      "description": "Nou analize pwosesis fizik ki egziste kounye a ak blokaj sistemik yo"
     },
     "step2": {
       "number": "02",
       "title": "Benchmark",
-      "description": "Nou etidye solisyon pwouve nan peyi ki gen kontèks konparab."
+      "description": "Nou etidye solisyon pwouve nan peyi ki gen kontèks konparab"
     },
     "step3": {
       "number": "03",
       "title": "Achitekti",
-      "description": "Nou konsevwa achitekti teknoloji evolitif, modèl done ak pwotokòl ki an sekirite."
+      "description": "Nou konsevwa achitekti teknoloji evolitif, modèl done ak pwotokòl ki an sekirite"
     },
     "step4": {
       "number": "04",
       "title": "Kad legal",
-      "description": "Nou idantifye ajisteman reglemantè minimòm ki endispansab pou vyabilite pwojè a."
+      "description": "Nou idantifye ajisteman reglemantè minimòm ki endispansab pou vyabilite pwojè a"
     }
   },
   "cta": {
     "title": "Konbyen tan n ap tann ankò pou yon moso papye",
-    "paragraph": "An Ayiti, lè w pran nesans, vote oswa kreye yon antrepriz, se sèlman twa nan yon lis san fen pwosedi ki paralize pa papye ak pwosesis manyèl. Pandanstan, monn nan ap avanse ak vitès, epi nou menm n ap tann plizyè mwa pou yon paspò, mande favè pou ouvri yon komès oswa lite senpleman pou nou jwenn yon ak nesans. Wi, se konsa sistèm nan fonksyone.",
+    "paragraph": "An Ayiti, lè w pran nesans, vote oswa kreye yon antrepriz, se sèlman twa nan yon lis san fen pwosedi ki paralize pa papye ak pwosesis manyèl. Pandanstan, monn nan ap avanse ak vitès, epi nou menm n ap tann plizyè mwa pou yon paspò, mande favè pou ouvri yon komès oswa lite senpleman pou nou jwenn yon ak nesans. Wi, se konsa sistèm nan fonksyone",
     "highlight": "Teknoloji pa yon liks, se fen imilyasyon biwokratik",
     "btnShare": "Pataje vizyon sa a",
     "btnJoin": "Rejwenn ekip IT a"
