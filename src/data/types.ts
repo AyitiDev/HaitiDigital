@@ -46,4 +46,6 @@ export interface Proposal {
   title: string;
   summary: string;
   detail: ProposalDetail;
+  /** When true, [slug].astro delegates body rendering to a dedicated content component */
+  hasCustomContent?: boolean;
 }

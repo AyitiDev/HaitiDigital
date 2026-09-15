@@ -1,0 +1,196 @@
+---
+interface Props {
+  diagram: string;
+  id: string;
+  label?: string;
+}
+const { diagram, id, label } = Astro.props;
+const encoded = Buffer.from(diagram.trim(), 'utf-8').toString('base64');
+---
+
+<figure class="mermaid-figure my-8 -mx-4 w-[calc(100%+2rem)] overflow-x-auto px-4 sm:mx-0 sm:w-full sm:px-0" aria-label={label}>
+  <div
+    id={id}
+    class="mermaid-target w-max min-w-full"
+    data-diagram={encoded}
+    aria-hidden="true"
+  >
+    <noscript>
+      <pre class="text-xs text-neutral-400 overflow-x-auto">{diagram}</pre>
+    </noscript>
+  </div>
+</figure>
+
+<style>
+  .mermaid-figure {
+    --mermaid-text: #171717;
+    --mermaid-surface: #ffffff;
+    --mermaid-note-fill: #fffbeb;
+    --mermaid-note-stroke: #a16207;
+    scrollbar-color: #a3a3a3 transparent;
+    scrollbar-width: thin;
+  }
+
+  :global(.dark) .mermaid-figure {
+    --mermaid-text: #f5f5f5;
+    --mermaid-surface: #171717;
+    --mermaid-note-fill: #29210d;
+    --mermaid-note-stroke: #d4a72c;
+  }
+
+  /* Mermaid derives this label color from a contrast calculation that is
+     unsuitable for our light surface. Keep all SVG labels aligned with the
+     surrounding page theme. */
+  .mermaid-figure :global(.nodeLabel),
+  .mermaid-figure :global(.stateLabel) {
+    color: var(--mermaid-text) !important;
+  }
+
+  /* Mermaid applies a 50% opacity fill to connector labels. On a light page
+     that produces the grey/translucent rectangles visible behind the text. */
+  .mermaid-figure :global(.edgeLabel rect),
+  .mermaid-figure :global(.edgeLabel .label rect),
+  .mermaid-figure :global(.stateLabel .box) {
+    fill: var(--mermaid-surface) !important;
+    opacity: 1 !important;
+  }
+
+  .mermaid-figure :global(.edgeLabel),
+  .mermaid-figure :global(.edgeLabel .labelBkg),
+  .mermaid-figure :global(.edgeLabel p) {
+    background-color: var(--mermaid-surface) !important;
+    color: var(--mermaid-text) !important;
+    opacity: 1 !important;
+  }
+
+  /* Keep labels readable on a phone. Complex diagrams scroll inside their
+     own container instead of shrinking the SVG and the surrounding page. */
+  .mermaid-figure :global(svg.flowchart) {
+    min-width: 42rem;
+  }
+
+  .mermaid-figure :global(svg.statediagram) {
+    min-width: 40rem;
+  }
+
+  @media (min-width: 768px) {
+    .mermaid-figure {
+      width: min(calc(100vw - 3rem), 64rem);
+      margin-left: 50%;
+      margin-right: 0;
+      transform: translateX(-50%);
+    }
+
+    .mermaid-figure :global(svg.flowchart),
+    .mermaid-figure :global(svg.statediagram) {
+      min-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  import mermaid from 'mermaid';
+
+  function getMermaidTheme() {
+    const isDark = document.documentElement.classList.contains('dark');
+    const text = isDark ? '#f5f5f5' : '#171717';
+    const surface = isDark ? '#171717' : '#fafafa';
+    const border = isDark ? '#a3a3a3' : '#525252';
+
+    return {
+      theme: 'base' as const,
+      themeVariables: {
+        background: 'transparent',
+        mainBkg: surface,
+        primaryColor: surface,
+        primaryTextColor: text,
+        primaryBorderColor: border,
+        lineColor: border,
+        secondaryColor: surface,
+        tertiaryColor: isDark ? '#29210d' : '#fffbeb',
+        noteBkgColor: isDark ? '#29210d' : '#fffbeb',
+        noteBorderColor: isDark ? '#d4a72c' : '#a16207',
+        noteTextColor: text,
+        edgeLabelBackground: isDark ? '#171717' : '#ffffff',
+        clusterBkg: isDark ? '#171717' : '#f5f5f5',
+        clusterBorder: border,
+        titleColor: text,
+        fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',
+        fontSize: '14px',
+        nodeBorder: border,
+        nodeTextColor: text,
+        stateBkg: surface,
+        stateBorder: border,
+        labelBackground: isDark ? '#171717' : '#ffffff',
+        labelTextColor: text,
+        attributeBackgroundColorEven: surface,
+        attributeBackgroundColorOdd: isDark ? '#262626' : '#f5f5f5',
+      },
+    };
+  }
+
+  function decodeBase64Utf8(base64: string): string {
+    try {
+      const binStr = atob(base64);
+      const bytes = Uint8Array.from(binStr, (c) => c.charCodeAt(0));
+      return new TextDecoder().decode(bytes);
+    } catch {
+      return atob(base64);
+    }
+  }
+
+  let initialized = false;
+
+  async function renderAll() {
+    if (!initialized) {
+      mermaid.initialize({
+        startOnLoad: false,
+        suppressErrorRendering: true,
+        securityLevel: 'loose',
+        ...getMermaidTheme(),
+      });
+      initialized = true;
+    }
+
+    const targets = document.querySelectorAll<HTMLElement>('.mermaid-target[data-diagram]');
+    for (const el of targets) {
+      if (el.dataset.rendered === 'true') continue;
+      const encoded = el.dataset.diagram ?? '';
+      if (!encoded) continue;
+      try {
+        const code = decodeBase64Utf8(encoded);
+        const renderId = 'm-' + Math.random().toString(36).substring(2, 9);
+        const { svg } = await mermaid.render(renderId, code);
+        el.innerHTML = svg;
+        el.dataset.rendered = 'true';
+
+        // Make SVG responsive
+        const svgEl = el.querySelector('svg');
+        if (svgEl) {
+          svgEl.removeAttribute('height');
+          svgEl.style.width = '100%';
+          svgEl.style.maxWidth = '100%';
+          svgEl.style.height = 'auto';
+        }
+      } catch (err) {
+        console.error('[MermaidDiagram] render error for', el.id, err);
+        const code = decodeBase64Utf8(encoded);
+        el.innerHTML = `<pre class="text-xs text-neutral-400 overflow-x-auto p-3 border border-neutral-800 rounded bg-neutral-900">${code}</pre>`;
+      }
+    }
+  }
+
+  renderAll();
+  document.addEventListener('astro:page-load', renderAll);
+  document.addEventListener('click', (event) => {
+    if (!(event.target as Element).closest('#theme-toggle')) return;
+    requestAnimationFrame(() => {
+      document.querySelectorAll<HTMLElement>('.mermaid-target[data-diagram]').forEach((el) => {
+        delete el.dataset.rendered;
+        el.replaceChildren();
+      });
+      initialized = false;
+      renderAll();
+    });
+  });
+</script>

@@ -29,11 +29,11 @@ const t = useProposals(lang);
     </p>
   </div>
 
-  <div class="flex items-center gap-2">
+  <div class="flex w-full sm:w-auto items-center gap-2">
     <button
       id="upvote-btn"
       type="button"
-      class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-sm font-semibold hover:border-neutral-900 dark:hover:border-neutral-400 transition-all cursor-pointer"
+      class="min-h-11 flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-sm font-semibold hover:border-neutral-900 dark:hover:border-neutral-400 transition-all cursor-pointer"
       aria-label={t('detail.upvote')}
     >
       <Icon name="thumbs-up" class="w-4 h-4" />
@@ -43,7 +43,7 @@ const t = useProposals(lang);
     <button
       id="downvote-btn"
       type="button"
-      class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-sm font-semibold hover:border-neutral-900 dark:hover:border-neutral-400 transition-all cursor-pointer"
+      class="min-h-11 flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-sm font-semibold hover:border-neutral-900 dark:hover:border-neutral-400 transition-all cursor-pointer"
       aria-label={t('detail.downvote')}
     >
       <Icon name="thumbs-down" class="w-4 h-4" />
@@ -57,7 +57,6 @@ const t = useProposals(lang);
     const widget = document.getElementById('vote-widget');
     if (!widget) return;
 
-    const proposalId = widget.getAttribute('data-proposal-id') || 'default';
     const upBtn = document.getElementById('upvote-btn');
     const downBtn = document.getElementById('downvote-btn');
     const upEl = document.getElementById('upvote-count');
@@ -68,8 +67,7 @@ const t = useProposals(lang);
       down: parseInt(widget.getAttribute('data-initial-dislikes') || '0', 10),
     };
 
-    const key = `vote_${proposalId}`;
-    let vote: 'up' | 'down' | null = localStorage.getItem(key) as any;
+    let vote: 'up' | 'down' | null = null;
 
     function render() {
       if (!upBtn || !downBtn || !upEl || !downEl) return;
@@ -87,13 +85,11 @@ const t = useProposals(lang);
 
     upBtn?.addEventListener('click', () => {
       vote = vote === 'up' ? null : 'up';
-      vote ? localStorage.setItem(key, vote) : localStorage.removeItem(key);
       render();
     });
 
     downBtn?.addEventListener('click', () => {
       vote = vote === 'down' ? null : 'down';
-      vote ? localStorage.setItem(key, vote) : localStorage.removeItem(key);
       render();
     });
 

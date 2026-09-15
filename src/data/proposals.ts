@@ -5,15 +5,18 @@ export const PROPOSALS: Proposal[] = [
     id: 'prop-1',
     slug: 'digital-civil-registry',
     category: 'identity',
-    status: 'in_development',
+    status: 'complete',
     icon: 'id-card',
+    hasCustomContent: true,
     title: 'Digital Civil Registry',
     summary:
-      'Centralized, interoperable digital identity system to eliminate under-registration and enable secure remote citizen procedures',
+      'A centralized, interoperable digital identity system to end under registration and allow citizens to handle official procedures securely from anywhere',
     detail: {
       leadTitle:
-        'Towards a Digital Civil Registry: the first step of technological sovereignty',
-      author: 'Unnamed Team',
+        "Haiti's Civil Registry: Why It Fails and How to Rebuild It from Scratch",
+      author: 'Ayiti Dijital Team',
+      publishDate: '2026-09-14',
+      readingTime: '14',
       initialUpvotes: 0,
       initialDislikes: 0,
       commentsCount: 0,
@@ -21,12 +24,36 @@ export const PROPOSALS: Proposal[] = [
   },
 ];
 
-export function getProposals(): Proposal[] {
-  return PROPOSALS;
+export function getProposals(lang?: SupportedLanguage): Proposal[] {
+  if (!lang) return PROPOSALS;
+  return PROPOSALS.map((p) => {
+    const loc = getLocalizedProposalContent(p.slug, lang);
+    return {
+      ...p,
+      title: loc.title || p.title,
+      summary: loc.summary || p.summary,
+      detail: {
+        ...p.detail,
+        leadTitle: loc.leadTitle || p.detail.leadTitle,
+      },
+    };
+  });
 }
 
-export function getProposalBySlug(slug: string): Proposal | undefined {
-  return PROPOSALS.find((p) => p.slug === slug);
+export function getProposalBySlug(slug: string, lang?: SupportedLanguage): Proposal | undefined {
+  const p = PROPOSALS.find((item) => item.slug === slug);
+  if (!p) return undefined;
+  if (!lang) return p;
+  const loc = getLocalizedProposalContent(p.slug, lang);
+  return {
+    ...p,
+    title: loc.title || p.title,
+    summary: loc.summary || p.summary,
+    detail: {
+      ...p.detail,
+      leadTitle: loc.leadTitle || p.detail.leadTitle,
+    },
+  };
 }
 
 export const CATEGORIES_CONFIG: { id: ProposalCategory | 'all'; labelKey: string }[] = [

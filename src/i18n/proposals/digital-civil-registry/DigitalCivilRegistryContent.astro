@@ -1,0 +1,336 @@
+---
+import MermaidDiagram from '../../ui/MermaidDiagram.astro';
+import { getProposalFullContent, type SupportedLanguage } from '../../../i18n/utils';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const content = getProposalFullContent('digital-civil-registry', lang);
+const { executiveSummary, diagrams, sections } = content;
+---
+
+<div class="space-y-8 text-neutral-800 dark:text-neutral-200 leading-relaxed text-sm sm:text-base my-8">
+
+  <!-- Executive Summary Box -->
+  {executiveSummary && (
+    <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/70 space-y-3">
+      <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+        <span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>
+        Executive Summary
+      </div>
+      <p class="text-neutral-700 dark:text-neutral-300 font-medium">
+        {executiveSummary}
+      </p>
+    </div>
+  )}
+
+  <!-- Section 1: The Silent Collapse -->
+  {sections?.section1 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section1.title}
+      </h2>
+      <p>{sections.section1.p1}</p>
+      <p>{sections.section1.p2}</p>
+
+      {sections.section1.sources && (
+        <div class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/30 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+            {sections.section1.sourcesTitle}
+          </h3>
+          <ul class="space-y-1.5 text-xs text-neutral-600 dark:text-neutral-400">
+            {sections.section1.sources.map((src: any) => (
+              <li>
+                • <a href={src.url} target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">{src.name}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Section 2: The Proposal -->
+  {sections?.section2 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section2.title}
+      </h2>
+      <p>{sections.section2.p1}</p>
+
+      {sections.section2.pillars && (
+        <div class="grid sm:grid-cols-3 gap-4 my-4">
+          {sections.section2.pillars.map((pillar: any) => (
+            <div class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900">
+              <div class="font-bold text-neutral-950 dark:text-white text-sm mb-1">{pillar.title}</div>
+              <div class="text-xs text-neutral-600 dark:text-neutral-400">{pillar.description}</div>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Section 3: Territory Organization & Diagram 1 -->
+  {sections?.section3 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section3.title}
+      </h2>
+      <p>{sections.section3.p1}</p>
+
+      {diagrams?.governance && (
+        <div class="my-6">
+          <MermaidDiagram
+            diagram={diagrams.governance.code}
+            id="diagram-governance"
+            label={diagrams.governance.label}
+          />
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Section 4: One Building -->
+  {sections?.section4 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section4.title}
+      </h2>
+      <p>{sections.section4.p1}</p>
+      <p>{sections.section4.p2}</p>
+    </section>
+  )}
+
+  <!-- Section 5: Technical Architecture & Diagram 3 -->
+  {sections?.section5 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section5.title}
+      </h2>
+      <p>{sections.section5.p1}</p>
+
+      {sections.section5.items && (
+        <ul class="space-y-2 list-disc list-inside text-sm text-neutral-700 dark:text-neutral-300">
+          {sections.section5.items.map((item: any) => (
+            <li>
+              <strong>{item.label}:</strong> {item.value}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {diagrams?.architecture && (
+        <div class="my-6">
+          <MermaidDiagram
+            diagram={diagrams.architecture.code}
+            id="diagram-architecture"
+            label={diagrams.architecture.label}
+          />
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Section 6: Birth to Identification -->
+  {sections?.section6 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section6.title}
+      </h2>
+      <p>{sections.section6.p1}</p>
+    </section>
+  )}
+
+  <!-- Section 7: Step by Step & Diagram 2 -->
+  {sections?.section7 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section7.title}
+      </h2>
+
+      {sections.section7.steps && (
+        <ol class="space-y-3 list-decimal list-inside text-sm text-neutral-700 dark:text-neutral-300 font-medium">
+          {sections.section7.steps.map((step: string) => (
+            <li>{step}</li>
+          ))}
+        </ol>
+      )}
+
+      {diagrams?.workflow && (
+        <div class="my-6">
+          <MermaidDiagram
+            diagram={diagrams.workflow.code}
+            id="diagram-workflow"
+            label={diagrams.workflow.label}
+          />
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Section 8: Role Matrix -->
+  {sections?.section8 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section8.title}
+      </h2>
+      {sections.section8.rows && (
+        <div class="overflow-x-auto rounded-xl border border-neutral-200 dark:border-neutral-800">
+          <table class="w-full text-xs sm:text-sm text-left">
+            <thead class="bg-neutral-100 dark:bg-neutral-900 text-neutral-950 dark:text-white font-bold border-b border-neutral-200 dark:border-neutral-800">
+              <tr>
+                {sections.section8.tableHeaders?.map((h: string) => (
+                  <th class="p-3">{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-800 text-neutral-700 dark:text-neutral-300">
+              {sections.section8.rows.map((r: any) => (
+                <tr>
+                  <td class="p-3 font-semibold">{r.role}</td>
+                  <td class="p-3">{r.permission}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Section 9: Law -->
+  {sections?.section9 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section9.title}
+      </h2>
+      <p>{sections.section9.p1}</p>
+      {sections.section9.points && (
+        <ul class="space-y-2 list-disc list-inside text-sm text-neutral-700 dark:text-neutral-300">
+          {sections.section9.points.map((pt: string) => (
+            <li>{pt}</li>
+          ))}
+        </ul>
+      )}
+    </section>
+  )}
+
+  <!-- Section 10: Unspoken Problem -->
+  {sections?.section10 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section10.title}
+      </h2>
+      <p>{sections.section10.p1}</p>
+      {sections.section10.points && (
+        <ul class="space-y-2 list-disc list-inside text-sm text-neutral-700 dark:text-neutral-300">
+          {sections.section10.points.map((pt: string) => (
+            <li>{pt}</li>
+          ))}
+        </ul>
+      )}
+    </section>
+  )}
+
+  <!-- Section 11: Power Transition -->
+  {sections?.section11 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section11.title}
+      </h2>
+      <p>{sections.section11.p1}</p>
+    </section>
+  )}
+
+  <!-- Section 12: Financing -->
+  {sections?.section12 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section12.title}
+      </h2>
+      <p>{sections.section12.p1}</p>
+    </section>
+  )}
+
+  <!-- Section 13: Risks -->
+  {sections?.section13 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section13.title}
+      </h2>
+      {sections.section13.risks && (
+        <div class="grid sm:grid-cols-2 gap-4">
+          {sections.section13.risks.map((risk: any) => (
+            <div class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/50">
+              <div class="font-bold text-neutral-950 dark:text-white text-sm mb-1">{risk.title}</div>
+              <div class="text-xs text-neutral-600 dark:text-neutral-400">{risk.description}</div>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Section 14: KPIs -->
+  {sections?.section14 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section14.title}
+      </h2>
+      {sections.section14.kpis && (
+        <div class="grid sm:grid-cols-3 gap-4">
+          {sections.section14.kpis.map((kpi: any) => (
+            <div class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-center">
+              <div class="text-2xl font-extrabold text-blue-600 dark:text-blue-400">{kpi.value}</div>
+              <div class="text-xs text-neutral-600 dark:text-neutral-400 mt-1">{kpi.label}</div>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Section 15: Roadmap -->
+  {sections?.section15 && (
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight">
+        {sections.section15.title}
+      </h2>
+      {sections.section15.phases && (
+        <div class="space-y-3">
+          {sections.section15.phases.map((phase: any) => (
+            <div class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/60">
+              <span class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">{phase.phase}</span>
+              <h3 class="font-bold text-neutral-950 dark:text-white text-base mt-1">{phase.title}</h3>
+              <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-1">{phase.description}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- CTA Box -->
+  {sections?.cta && (
+    <div class="p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-950 text-white space-y-3 mt-10">
+      <h3 class="text-lg font-bold">{sections.cta.title}</h3>
+      <p class="text-xs sm:text-sm text-neutral-300">
+        {sections.cta.text}
+      </p>
+      <div class="pt-2">
+        <a
+          href={sections.cta.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-neutral-950 font-bold text-xs hover:bg-neutral-200 transition-colors"
+        >
+          {sections.cta.button}
+        </a>
+      </div>
+    </div>
+  )}
+
+</div>

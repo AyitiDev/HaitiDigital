@@ -18,7 +18,7 @@ const navItems = [
 ---
 
 <header class="sticky top-0 z-50 w-full bg-white/95 dark:bg-neutral-950/95 backdrop-blur-md border-b border-neutral-100 dark:border-neutral-800 transition-colors duration-200">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-4">
 
     <a href={getLocalizedPath('/', lang)} class="flex items-center gap-2 group">
       <div class="w-7 h-7 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-black text-[11px] tracking-tight transition-colors">
@@ -63,7 +63,7 @@ const navItems = [
       <button
         id="theme-toggle"
         type="button"
-        class="p-2 rounded-lg text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors"
+        class="min-w-11 min-h-11 inline-flex items-center justify-center rounded-lg text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors"
         aria-label={t('nav.theme.dark')}
       >
         <Icon name="sun" class="w-4 h-4 hidden dark:block" />
@@ -72,7 +72,7 @@ const navItems = [
 
       <a
         href="#join"
-        class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-semibold hover:bg-neutral-700 dark:hover:bg-neutral-100 transition-colors"
+        class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-semibold hover:bg-neutral-700 dark:hover:bg-neutral-100 transition-colors"
       >
         {t('nav.join')}
       </a>
@@ -80,7 +80,7 @@ const navItems = [
       <button
         id="mobile-menu-btn"
         type="button"
-        class="md:hidden p-2 rounded-lg text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+        class="md:hidden min-w-11 min-h-11 inline-flex items-center justify-center rounded-lg text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
         aria-label="Toggle menu"
       >
         <Icon name="menu" class="w-5 h-5 block" id="menu-icon-open" />
