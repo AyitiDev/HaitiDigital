@@ -46,7 +46,7 @@ export const diagrams = {
     [*] --> Notified: Hospital staff / mobile unit submits basic data
     Notified --> Declared: DNRCI trained officer adds supporting documents
     Declared --> Validated: Automatic system check (duplicates, consistency)
-    Validated --> Registered: Departmental Civil Officer approves, generates NICU, and signs digitally
+    Validated --> Registered: Departmental Civil Officer approves, generates NINU, and signs digitally
     Validated --> Escalated: Anomaly detected (possible duplicate/fraud)
     Escalated --> Registered: Central HQ resolves case
     Escalated --> Rejected: Fraud confirmed

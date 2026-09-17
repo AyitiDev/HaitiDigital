@@ -97,7 +97,7 @@
     },
     "section6": {
       "title": "From Birth to Complete Identification",
-      "p1": "At birth, a person receives their Unique Civil Identification Number (NICU) and a file in the national database, with biometric fields empty. Years later, when that person first goes to get their ID card, ONI does not create a new file: it opens the existing one (searching by their NICU) and fills in photo, fingerprints, iris, and digitized signature right there. Each ID renewal or passport procedure queries and updates those same fields, versioning changes without deleting history.",
+      "p1": "At birth, a person receives their Unique Civil Identification Number (NINU) and a file in the national database, with biometric fields empty. Years later, when that person first goes to get their ID card, ONI does not create a new file: it opens the existing one (searching by their NINU) and fills in photo, fingerprints, iris, and digitized signature right there. Each ID renewal or passport procedure queries and updates those same fields, versioning changes without deleting history.",
       "quote": "\"The biometric data does not belong to ONI as a separate institution. It belongs to the person\"",
       "p2": "It lives in their unique file within the DNRCI database. ONI only has write permission over biometric fields and is never the owner of a parallel database. This directly attacks the problem Haiti currently faces: when two institutions maintain their own copy of the same data, those copies desynchronize over time, and that is where fraud is born."
     },
@@ -118,7 +118,7 @@
         },
         {
           "name": "Registration and Approval",
-          "desc": "The Departmental Civil Office officer approves, the system generates the NICU, and digitally signs the certificate. Confirmation is sent via SMS to the family"
+          "desc": "The Departmental Civil Office officer approves, the system generates the NINU, and digitally signs the certificate. Confirmation is sent via SMS to the family"
         },
         {
           "name": "Escalation (Exceptional Cases Only)",
@@ -129,15 +129,17 @@
     },
     "section8": {
       "title": "Who Can Do What",
+      "canDo": "Can Do",
+      "cannotDo": "Cannot Do",
       "roles": [
         {
           "title": "DNRCI Employee in the Hospital",
           "allowed": ["Notify and declare births and deaths"],
-          "denied": ["Cannot approve registration or generate the NICU"]
+          "denied": ["Cannot approve registration or generate the NINU"]
         },
         {
           "title": "Departmental Civil Office Officer",
-          "allowed": ["Approve and register certificates, generate the NICU, process marriages"],
+          "allowed": ["Approve and register certificates, generate the NINU, process marriages"],
           "denied": ["Cannot resolve fraud cases or legal disputes"]
         },
         {
@@ -156,7 +158,7 @@
       "points": [
         "Formally create the DNRCI as an institution with its own legal authority, separate from the National Archives.",
         "Give legal validity to digital registration, so that an electronic certificate has the same legal weight as a paper one.",
-        "Establish the NICU as a unique and mandatory lifetime identifier.",
+        "Establish the NINU as a unique and mandatory lifetime identifier.",
         "Mandate by law the interconnection between institutions, rather than leaving it as something voluntary.",
         "Protect personal and biometric data, with clear rules on who accesses what.",
         "Guarantee free birth registration, even late registrations.",
@@ -165,7 +167,7 @@
     },
     "section10": {
       "title": "The Problem No One Wants to Look At: The Millions That Already Exist Today",
-      "p1": "Everything above resolves registration from the day the system goes live. But an equally large problem remains: the millions of Haitians who already exist today, with their certificate stored in a paper book in some tribunal or the National Archives. That historical archive cannot simply be left out of the NICU.",
+      "p1": "Everything above resolves registration from the day the system goes live. But an equally large problem remains: the millions of Haitians who already exist today, with their certificate stored in a paper book in some tribunal or the National Archives. That historical archive cannot simply be left out of the NINU.",
       "p2": "We propose solving it on two parallel fronts, following the model Spain used for the same problem:",
       "fronts": [
         {
@@ -174,7 +176,7 @@
         },
         {
           "name": "Front 2: On Demand Digitization",
-          "text": "While Front 1 advances, any citizen needing an old certificate for a procedure can request it, and at that moment it is digitized, validated, and receives their NICU immediately, without waiting for their region's turn"
+          "text": "While Front 1 advances, any citizen needing an old certificate for a procedure can request it, and at that moment it is digitized, validated, and receives their NINU immediately, without waiting for their region's turn"
         }
       ],
       "mitigationTitle": "Given the extremely high demand for documents for migratory purposes in Haiti, a spike in passport requests could saturate this second front. To avoid it:",
@@ -232,7 +234,7 @@
         "Registration coverage: percentage of births registered within the first 72 hours",
         "Processing time: from weeks or months (as OCNH reports today) to days",
         "Reduction of inactive offices: from cases like Terre Neuve or Cité Soleil to a target number of operational offices",
-        "NICU adoption: percentage of population with an active unique identifier",
+        "NINU adoption: percentage of population with an active unique identifier",
         "Real interconnection: number of successful queries between institutions, as evidence that they truly communicate and do not just operate in parallel"
       ]
     },
@@ -242,7 +244,7 @@
       "phases": [
         {
           "name": "Phase 0: Law First",
-          "text": "Approval of the law creating DNRCI, defining the NICU and the cross subsidy fund. No technical component is built before: without legal authority, the platform has nothing to compel anyone to interconnect"
+          "text": "Approval of the law creating DNRCI, defining the NINU and the cross subsidy fund. No technical component is built before: without legal authority, the platform has nothing to compel anyone to interconnect"
         },
         {
           "name": "Phase 1: Servers First",

@@ -97,7 +97,7 @@
     },
     "section6": {
       "title": "Soti nan Nesans rive nan Idantifikasyon Konpl\u00e8",
-      "p1": "Nan nesans, yon moun resevwa Nimewo Idantifikasyon Sivil Inik li (NICU) epi yo kreye yon dosye pou li nan bazdone nasyonal la, ak chan byometrik yo ki rete vid. Plizy\u00e8 ane apre, l\u00e8 moun sa a al pran kat idantite li pou premye fwa, ONI pa kreye yon nouvo dosye: li ouvri dosye ki deja egziste a (l ap ch\u00e8che l av\u00e8k NICU a) epi li ranpli foto, anprent dw\u00e8t, iris ak siyati nimerik la dir\u00e8kteman nan dosye sa a. Chak renouv\u00e8lman kat idantite oswa pwosedi pasp\u00f2 ap konsilte epi mete menm chan sa yo ajou, pandan sist\u00e8m nan kons\u00e8ve v\u00e8syon chanjman yo san li pa efase istwa a.",
+      "p1": "Nan nesans, yon moun resevwa Nimewo Idantifikasyon Sivil Inik li (NINU) epi yo kreye yon dosye pou li nan bazdone nasyonal la, ak chan byometrik yo ki rete vid. Plizy\u00e8 ane apre, l\u00e8 moun sa a al pran kat idantite li pou premye fwa, ONI pa kreye yon nouvo dosye: li ouvri dosye ki deja egziste a (l ap ch\u00e8che l av\u00e8k NINU a) epi li ranpli foto, anprent dw\u00e8t, iris ak siyati nimerik la dir\u00e8kteman nan dosye sa a. Chak renouv\u00e8lman kat idantite oswa pwosedi pasp\u00f2 ap konsilte epi mete menm chan sa yo ajou, pandan sist\u00e8m nan kons\u00e8ve v\u00e8syon chanjman yo san li pa efase istwa a.",
       "quote": "\"Done byometrik yo pa pou ONI k\u00f2m yon enstitisyon apa. Yo se pou moun nan.\"",
       "p2": "Yo rete nan dosye inik moun nan nan bazdone DNRCI a. ONI s\u00e8lman gen p\u00e8misyon pou ekri nan chan byometrik yo e li pa janm pwopriyet\u00e8 yon bazdone paral\u00e8l. Sa atake dir\u00e8kteman pwobl\u00e8m Ayiti genyen kounye a: l\u00e8 de enstitisyon kenbe pw\u00f2p kopi menm done yo, kopi sa yo vin pa koresponn sou tan, e se la fwod f\u00e8t."
     },
@@ -118,7 +118,7 @@
         },
         {
           "name": "Enskripsyon ak Apwobasyon",
-          "desc": "Ofisye Biwo Rejis Sivil Depatmantal la apwouve dosye a, sist\u00e8m nan jenere NICU a epi li siyen s\u00e8tifika a nimerikman. Konfimasyon voye bay fanmi an atrav\u00e8 SMS."
+          "desc": "Ofisye Biwo Rejis Sivil Depatmantal la apwouve dosye a, sist\u00e8m nan jenere NINU a epi li siyen s\u00e8tifika a nimerikman. Konfimasyon voye bay fanmi an atrav\u00e8 SMS."
         },
         {
           "name": "Eskalad (Ka Eksepsyon\u00e8l S\u00e8lman)",
@@ -129,6 +129,8 @@
     },
     "section8": {
       "title": "Ki Moun ki Ka F\u00e8 Kisa",
+      "canDo": "Ka f\u00e8",
+      "cannotDo": "Pa ka f\u00e8",
       "roles": [
         {
           "title": "Anplwaye DNRCI nan Lopital",
@@ -136,13 +138,13 @@
             "Notifye ak deklare nesans ak lanm\u00f2"
           ],
           "denied": [
-            "Pa kapab apwouve enskripsyon oswa jenere NICU"
+            "Pa kapab apwouve enskripsyon oswa jenere NINU"
           ]
         },
         {
           "title": "Ofisye Biwo Rejis Sivil Depatmantal",
           "allowed": [
-            "Apwouve ak anrejistre ak yo, jenere NICU, trete maryaj"
+            "Apwouve ak anrejistre ak yo, jenere NINU, trete maryaj"
           ],
           "denied": [
             "Pa kapab rezoud ka fwod oswa litij legal"
@@ -168,7 +170,7 @@
       "points": [
         "Kreye DNRCI f\u00f2m\u00e8lman k\u00f2m yon enstitisyon ki gen pw\u00f2p otorite legal li, apa de Achiv Nasyonal yo.",
         "Bay enskripsyon nimerik val\u00e8 legal, pou yon s\u00e8tifika elektwonik gen menm pwa legal ak yon s\u00e8tifika sou papye.",
-        "Etabli NICU k\u00f2m yon idantifyan inik ak obligatwa pou tout lavi.",
+        "Etabli NINU k\u00f2m yon idantifyan inik ak obligatwa pou tout lavi.",
         "Oblije koneksyon ant enstitisyon yo atrav\u00e8 lalwa, olye pou yo kite sa k\u00f2m yon bagay volont\u00e8.",
         "Pwoteje done p\u00e8son\u00e8l ak done byometrik yo, av\u00e8k r\u00e8g kl\u00e8 sou kiy\u00e8s ki gen aks\u00e8 ak kisa.",
         "Garanti enskripsyon nesans gratis, menm pou enskripsyon ki f\u00e8t anreta.",
@@ -177,7 +179,7 @@
     },
     "section10": {
       "title": "Pwobl\u00e8m P\u00e8sonn Pa Vle Gade: Milyon Moun ki Deja Egziste Jodi a",
-      "p1": "Tout sa ki anwo yo rezoud enskripsyon depi jou sist\u00e8m nan lanse. Men gen yon l\u00f2t pwobl\u00e8m ki menm jan an gwo: milyon Ayisyen ki deja egziste jodi a, ak ak nesans yo, ak maryaj yo oswa ak lanm\u00f2 yo ki estoke nan liv papye nan k\u00e8k tribinal oswa nan Achiv Nasyonal yo. Achiv istorik sa a pa ka senpleman rete dey\u00f2 NICU a.",
+      "p1": "Tout sa ki anwo yo rezoud enskripsyon depi jou sist\u00e8m nan lanse. Men gen yon l\u00f2t pwobl\u00e8m ki menm jan an gwo: milyon Ayisyen ki deja egziste jodi a, ak ak nesans yo, ak maryaj yo oswa ak lanm\u00f2 yo ki estoke nan liv papye nan k\u00e8k tribinal oswa nan Achiv Nasyonal yo. Achiv istorik sa a pa ka senpleman rete dey\u00f2 NINU a.",
       "p2": "Nou pwopoze rezoud pwobl\u00e8m nan sou de fas an paral\u00e8l, selon mod\u00e8l Espay te itilize pou menm pwobl\u00e8m nan:",
       "fronts": [
         {
@@ -186,7 +188,7 @@
         },
         {
           "name": "Fas 2: Dijitalizasyon sou Demann",
-          "text": "Pandan Fas 1 ap avanse, nenp\u00f2t sitwayen ki bezwen yon ansyen s\u00e8tifika pou yon pwosedi ka mande l, epi nan moman sa a yo dijitalize l, valide l epi yo ba li NICU li imedyatman, san li pa bezwen tann se tou pa rejyon li a rive."
+          "text": "Pandan Fas 1 ap avanse, nenp\u00f2t sitwayen ki bezwen yon ansyen s\u00e8tifika pou yon pwosedi ka mande l, epi nan moman sa a yo dijitalize l, valide l epi yo ba li NINU li imedyatman, san li pa bezwen tann se tou pa rejyon li a rive."
         }
       ],
       "mitigationTitle": "Etandone demann pou dokiman pou rezon migrasyon tr\u00e8 wo ann Ayiti, yon ogmantasyon nan demann pasp\u00f2 ka mete tw\u00f2p chay sou dezy\u00e8m fas sa a. Pou evite sa:",
@@ -244,7 +246,7 @@
         "Kouv\u00e8ti enskripsyon: pousantaj nesans ki anrejistre nan premye 72 \u00e8dtan yo.",
         "Tan tretman: soti nan sem\u00e8n oswa mwa (jan OCNH rap\u00f2te sa jodi a) pou rive nan k\u00e8k jou.",
         "Rediksyon biwo ki pa aktif: soti nan ka tankou Terre Neuve oswa Site Sol\u00e8y pou rive nan yon kantite biwo operasyon\u00e8l ki fikse k\u00f2m objektif.",
-        "Adopsyon NICU: pousantaj popilasyon ki gen yon idantifyan inik aktif.",
+        "Adopsyon NINU: pousantaj popilasyon ki gen yon idantifyan inik aktif.",
         "Ent\u00e8koneksyon rey\u00e8l: kantite demann ki reyisi ant enstitisyon yo, k\u00f2m pr\u00e8v yo vr\u00e8man kominike olye yo fonksyone an paral\u00e8l."
       ]
     },
@@ -254,7 +256,7 @@
       "phases": [
         {
           "name": "Faz 0: Lalwa an Premye",
-          "text": "Apwobasyon lwa ki kreye DNRCI, defini NICU ak fon finansman kwaze a. Pa gen okenn eleman teknik ki konstwi anvan sa: san otorite legal, platf\u00f2m nan pa gen okenn mwayen pou f\u00f2se enstitisyon yo ent\u00e8konekte."
+          "text": "Apwobasyon lwa ki kreye DNRCI, defini NINU ak fon finansman kwaze a. Pa gen okenn eleman teknik ki konstwi anvan sa: san otorite legal, platf\u00f2m nan pa gen okenn mwayen pou f\u00f2se enstitisyon yo ent\u00e8konekte."
         },
         {
           "name": "Faz 1: S\u00e8v\u00e8 an Premye",
