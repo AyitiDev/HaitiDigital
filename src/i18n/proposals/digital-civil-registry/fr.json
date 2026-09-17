@@ -1,5 +1,273 @@
 {
-  "title": "Registre civil numérique",
-  "leadTitle": "Vers un registre civil numérique: le premier pas d'Haïti vers la souveraineté technologique",
-  "summary": "Un système d'identité numérique centralisé et interopérable pour mettre fin au sous-enregistrement et permettre aux citoyens d'effectuer leurs démarches officielles en toute sécurité, depuis n'importe où"
+  "title": "État civil en Haïti : pourquoi il échoue et comment le reconstruire à partir de zéro",
+  "leadTitle": "État civil en Haïti : pourquoi il échoue et comment le reconstruire à partir de zéro",
+  "summary": "Nous proposons de créer une nouvelle institution dédiée exclusivement à l'état civil, avec une architecture technologique éprouvée dans d'autres pays, et nous expliquons ce qu'une loi devrait prévoir pour la rendre possible, sans prétendre avoir toutes les réponses.",
+  "meta": {
+    "author": "Ayiti Dijital Team",
+    "category": "Digital Government Proposal",
+    "readingTime": "14 min read"
+  },
+  "executiveSummary": "85 % des officiers d'état civil en Haïti ont été nommés en 1995, et beaucoup ne sont plus en mesure d'exercer leurs fonctions. Le système actuel, divisé entre des institutions sans mandat clair, laisse des milliers de personnes sans acte de naissance, sans carte d'identité et sans accès aux droits fondamentaux. Nous proposons de créer une nouvelle institution dédiée exclusivement à l'état civil, avec une architecture technologique éprouvée dans d'autres pays, et nous expliquons ce qu'une loi devrait prévoir pour la rendre possible, sans prétendre avoir toutes les réponses.",
+  "diagrams": {
+    "governance": {
+      "label": "Diagramme 1 : Organigramme de la gouvernance institutionnelle"
+    },
+    "architecture": {
+      "label": "Diagramme 3 : Organigramme de l'architecture des serveurs et du réseau"
+    },
+    "workflow": {
+      "label": "Diagramme 2 : Diagramme d'état du processus d'enregistrement"
+    }
+  },
+  "sections": {
+    "section1": {
+      "title": "L'effondrement silencieux de l'état civil haïtien",
+      "p1": "Le système de l'état civil en Haïti traverse actuellement une crise structurelle documentée. Un rapport de l'Organisation des citoyens pour une nouvelle Haïti (OCNH), publié en mars 2026, révèle que près de 85 % des officiers d'état civil en activité ont été nommés en 1995, et que nombre d'entre eux ne sont plus en mesure de travailler en raison de l'âge ou de problèmes de vision, laissant une main-d'œuvre vieillissante porter l'identité juridique de tout un pays.",
+      "p2": "L'enquête de terrain de l'OCNH confirme ce que de nombreuses familles vivent déjà directement : plusieurs bureaux d'état civil fonctionnent de manière irrégulière ou sont complètement fermés. Le bureau de Terre-Neuve dans l'Artibonite est fermé depuis juillet 2024, et à Cité Soleil dans l'Ouest, le bureau est inactif depuis juin 2021, obligeant les citoyens à voyager jusqu'à Delmas pour obtenir un document aussi basique qu'un acte de naissance.",
+      "p3": "Les conséquences ne sont pas abstraites : les enfants et les étudiants ne peuvent pas s'inscrire aux examens officiels, les jeunes sont omis des listes électorales, la difficulté de prouver la filiation ou l'identité juridique complique l'accès à la justice, et la délivrance des passeports est paralysée, bloquant les projets migratoires de milliers de personnes.",
+      "p4": "Ce n'est pas un problème nouveau. En 2008, le cas d'Ericq Pierre, alors candidat au poste de Premier ministre, a mis en lumière le problème au plus haut niveau : lui-même n'a pas pu obtenir l'acte de naissance de ses grands-parents pour prouver son origine haïtienne. Un rapport des Nations Unies sur le séisme de 2021 a documenté que les structures chargées de l'état civil « n'existent que sur le papier » par manque de budget, laissant les agents locaux fonctionner sans réel contrôle.",
+      "sourcesTitle": "Sources :",
+      "sources": [
+        {
+          "name": "L'OCNH révèle la crise de l'état civil, 85 % des officiers nommés en 1995",
+          "url": "https://lereliefhaiti.com/articles/haiti-civil-registry-system-in-crisis-threatens-citizens-fundamental-rights"
+        },
+        {
+          "name": "Le Nouvelliste fait état des conclusions de l'OCNH sur les faiblesses du système, mars 2026",
+          "url": "https://lenouvelliste.com/en/article/266348/ocnh-report-exposes-new-weaknesses-in-haitis-civil-registry-system"
+        },
+        {
+          "name": "Camille Occius (OCNH) met en garde contre le risque d'apatridie dans les zones rurales",
+          "url": "https://lenouvelliste.com/en/article/262527/camille-occius-warns-of-a-deepening-civil-registry-crisis-in-haiti"
+        },
+        {
+          "name": "Accès aux documents d'état civil : un droit fondamental en péril",
+          "url": "https://www.lereliefhaiti.com/en/articles/access-to-civil-status-documents-in-haiti-ocnh-denounces-a-fundamental-right-in-peril"
+        }
+      ]
+    },
+    "section2": {
+      "title": "La proposition : une institution née pour cela, et uniquement pour cela",
+      "p1": "Aujourd'hui, une partie de la fonction d'état civil incombe aux Archives nationales d'Haïti (ANH), une institution rattachée au Ministère de la Culture, qui manque de mandat, de personnel ou de financement pour gérer un état civil dynamique. Il en résulte des retards chroniques dans le traitement des dossiers, un manque de contrôle sur les agents locaux et une vulnérabilité à la fraude documentaire.",
+      "p2": "Nous proposons de créer une nouvelle institution : la Direction nationale de l'état civil et de l'identité (DNRCI), rattachée au Ministère de la Justice, exclusivement responsable de l'enregistrement, de la conservation et de la gestion des actes de naissance, de mariage et de décès sur l'ensemble du territoire national."
+    },
+    "section3": {
+      "title": "Comment elle est organisée sur le territoire",
+      "p1": "La DNRCI est organisée en quatre niveaux, suivant la division administrative réelle d'Haïti. À Port-au-Prince fonctionne le Siège central, chargé de l'administration nationale et de la plateforme d'échange de données, sans service direct au public. Dans chacun des 10 départements du pays, un Bureau civil départemental est établi.",
+      "p2": "Les naissances et les décès sont enregistrés directement là où ils se produisent : les hôpitaux et les centres de santé disposent d'un personnel dédié de la DNRCI pour enregistrer le nouveau-né avant qu'il ne quitte le centre médical, dans le but de couvrir au moins 80 % des naissances du pays par ce canal. Dans les zones rurales sans couverture hospitalière, des unités mobiles couvrent les naissances et les décès en dehors d'un centre de santé.",
+      "p3": "Le Bureau civil départemental se concentre ensuite sur ce qui nécessite réellement une présence physique : le mariage et les cas exceptionnels qui n'ont pas pu être résolus à l'hôpital ou avec une unité mobile. Grâce à cette structure, aucun citoyen n'a besoin de se déplacer au-delà de la capitale de son propre département."
+    },
+    "section4": {
+      "title": "Un bâtiment unique, de multiples guichets",
+      "p1": "Dans chaque chef-lieu de département, l'antenne de la DNRCI ne serait pas un bâtiment isolé, mais ferait partie d'un centre administratif partagé : le même bâtiment où la DNRCI, l'ONI (carte d'identité), la Direction de la circulation et de la police routière (DCPR), entre autres ajoutées plus tard, coexistent sous un même toit mais avec un personnel distinct. C'est le même principe que les Maisons France Services en France, où le gouvernement a regroupé des dizaines de démarches en un seul point de service par région.",
+      "p2": "Cela signifie que quelqu'un qui se rend pour enregistrer un mariage peut, dans le même bâtiment, faire sa carte d'identité si le certificat est déjà prêt, sans avoir à retourner un autre jour dans un autre point de la ville. Cela réduit également les coûts d'infrastructure (un seul bâtiment par département, et non un par institution) et facilite la supervision croisée entre des institutions qui fonctionnent actuellement en silos."
+    },
+    "section5": {
+      "title": "Architecture technique proposée",
+      "p1": "Un système de cette envergure ne fonctionne pas avec une seule technologie, mais avec la combinaison correcte de plusieurs éléments, chacun ayant un rôle défini.",
+      "subsections": [
+        {
+          "subtitle": "Backend",
+          "text": "Une pile de niveau entreprise (à définir lors de l'appel d'offres) pour les services traitant chaque enregistrement, suivant le même niveau de maturité et de support à long terme déjà utilisé par les systèmes d'identité de la région."
+        },
+        {
+          "subtitle": "Base de données",
+          "text": "Une base de données de niveau gouvernemental, dotée d'un chiffrement au niveau des colonnes (AES-256) pour les champs les plus sensibles, y compris les certificats et les données biométriques, installée sur les propres serveurs de l'État. Jamais dans le cloud d'un fournisseur étranger."
+        },
+        {
+          "subtitle": "Interopérabilité entre institutions (Modèle X-Road)",
+          "text": "Au lieu d'une API de fortune, la connexion entre la DNRCI, l'ONI et la DIE suit un modèle de couche d'échange sécurisée de style X-Road, le même que celui utilisé par l'Estonie et plus de 25 pays. Chaque institution maintient sa propre base de données, mais elles communiquent par l'intermédiaire d'un « serveur de sécurité » qui signe numériquement chaque requête, chiffre la communication de bout en bout et enregistre chaque échange dans un journal infalsifiable.",
+          "extra": "Personne n'accède aux données sans laisser de trace vérifiable"
+        },
+        {
+          "subtitle": "Logiciel d'enregistrement (PWA)",
+          "text": "Dans les hôpitaux et les bureaux départementaux, le personnel utilise une application web progressive (PWA), dotée de formulaires affichant une seule question par écran et d'une fonctionnalité hors ligne. Les enregistrements sont sauvegardés localement et synchronisés dès qu'il y a du signal, ce qui est crucial pour les zones rurales d'Haïti. L'accès nécessite un code PIN et une méthode d'authentification sécurisée supplémentaire à évaluer, et les citoyens reçoivent des mises à jour sur leur démarche par SMS ou par d'autres méthodes, en privilégiant les canaux qui ne nécessitent pas de connexion Internet."
+        },
+        {
+          "subtitle": "Où résident physiquement les données",
+          "text": "Le Centre principal de Port-au-Prince héberge la base de données nationale complète et se connecte au réseau dorsal du FAI via un périmètre de réseau sécurisé, alimenté par des énergies renouvelables. Un Centre de secours, dont l'emplacement exact reste à déterminer, doit être géographiquement éloigné de Port-au-Prince, selon le même principe utilisé par les banques : jamais deux centres de données sur la même faille sismique ou la même trajectoire d'ouragan. Les deux centres se synchronisent en quasi-temps réel : si Port-au-Prince tombe en panne en raison d'un ouragan, d'un séisme ou d'une coupure de courant prolongée, le centre de secours prend en charge l'ensemble des opérations du pays pendant que la panne est résolue.",
+          "extra": "La DNRCI doit être propriétaire des serveurs ; les contrats doivent exiger, même par la loi, que « les ordinateurs, le réseau, le centre de données et la base de données appartiendront à l'état civil ». Le fournisseur privé ne fournit que le logiciel et le matériel, installés dans les locaux propres de l'État."
+        },
+        {
+          "subtitle": "Cloud souverain hybride : ni tout physique, ni tout cloud",
+          "text": "Le Centre principal et le Centre de secours ne fonctionnent pas comme de simples serveurs isolés : ils s'exécutent sur une couche de cloud privé souverain, c'est-à-dire une technologie de cloud déployée au sein de la propre infrastructure de l'État (telle qu'OpenStack), et non sur des serveurs traditionnels sans virtualisation. Cela confère au système trois capacités normalement disponibles uniquement via des services de cloud public, sans quitter le territoire national ni le contrôle de l'État",
+          "extra": "Élasticité : capacité à dimensionner automatiquement les ressources lors des pics de demande, sans acheter de nouveau matériel à chaque fois. Reprise après sinistre rapide : si l'installation de Port-au-Prince subit une défaillance catastrophique, le système peut être reconstruit rapidement au Centre de secours, car toute l'infrastructure est définie comme du code, et non comme des configurations manuelles impossibles à répliquer rapidement. Portabilité future : s'il devient nécessaire à un moment donné de migrer d'un fournisseur d'hébergement à un autre, la couche de cloud privé facilite cette migration sans réécrire le système à partir de zéro"
+        }
+      ]
+    },
+    "section6": {
+      "title": "De la naissance à l'identification complète",
+      "p1": "À la naissance, une personne reçoit son Numéro d'identification nationale unique (NINU) et un dossier dans la base de données nationale, les champs biométriques étant vides. Des années plus tard, lorsque cette personne se rend pour la première fois pour obtenir sa carte d'identité, l'ONI ne crée pas de nouveau dossier : il ouvre le dossier existant (en effectuant une recherche par son NINU) et y intègre directement la photo, les empreintes digitales, l'iris et la signature numérisée. Chaque renouvellement de carte d'identité ou procédure de passeport interroge et met à jour ces mêmes champs, versionnant les modifications sans supprimer l'historique.",
+      "quote": "« Les données biométriques n'appartiennent pas à l'ONI en tant qu'institution distincte. Elles appartiennent à la personne »",
+      "p2": "Elles résident dans son dossier unique au sein de la base de données de la DNRCI. L'ONI dispose uniquement d'un droit d'écriture sur les champs biométriques et n'est jamais propriétaire d'une base de données parallèle. Cela s'attaque directement au problème auquel Haïti fait actuellement face : lorsque deux institutions maintiennent leur propre copie des mêmes données, ces copies se désynchronisent avec le temps, et c'est là que la fraude naît."
+    },
+    "section7": {
+      "title": "Le processus d'enregistrement, étape par étape",
+      "steps": [
+        {
+          "name": "Notification",
+          "desc": "Un employé de la DNRCI en poste exclusif à l'hôpital (et non du personnel médical prêté) saisit les données de base de la naissance, y compris le numéro de téléphone de contact des parents"
+        },
+        {
+          "name": "Déclaration",
+          "desc": "Les documents justificatifs sont joints : cartes d'identité des parents, certificat médical"
+        },
+        {
+          "name": "Validation automatique",
+          "desc": "Le système vérifie les doublons et la cohérence ; les cas rares sont signalés pour un examen manuel"
+        },
+        {
+          "name": "Enregistrement et approbation",
+          "desc": "L'agent du Bureau civil départemental approuve, le système génère le NINU et signe numériquement le certificat. Une confirmation est envoyée par SMS à la famille"
+        },
+        {
+          "name": "Escalade (Cas exceptionnels uniquement)",
+          "desc": "Seuls les cas de fraude suspectée, de vrais doublons ou de litiges juridiques sont remontés au Siège central, évitant ainsi que Port-au-Prince ne devienne un goulet d'étranglement pour chaque démarche dans le pays"
+        }
+      ],
+      "footer": "Le même squelette s'applique au mariage et au décès"
+    },
+    "section8": {
+      "title": "Qui peut faire quoi",
+      "canDo": "Peut faire",
+      "cannotDo": "Ne peut pas faire",
+      "roles": [
+        {
+          "title": "Employé de la DNRCI à l'hôpital",
+          "allowed": [
+            "Notifier et déclarer les naissances et les décès"
+          ],
+          "denied": [
+            "Ne peut pas approuver l'enregistrement ni générer le NINU"
+          ]
+        },
+        {
+          "title": "Agent du Bureau civil départemental",
+          "allowed": [
+            "Approuver et enregistrer les actes, générer le NINU, traiter les mariages"
+          ],
+          "denied": [
+            "Ne peut pas résoudre les cas de fraude ou les litiges juridiques"
+          ]
+        },
+        {
+          "title": "Supervision du Siège central",
+          "allowed": [
+            "Auditer, résoudre les cas escaladés, approuver les corrections majeures"
+          ],
+          "denied": [
+            "N'enregistre pas directement de nouveaux actes"
+          ]
+        }
+      ],
+      "footer": "Chaque action laisse une trace indélébile indiquant qui a effectué chaque action, quand, et depuis quel hôpital ou bureau. Aujourd'hui en Haïti, il est impossible de le vérifier"
+    },
+    "section9": {
+      "title": "Pourquoi cela nécessite une loi, et pas seulement de la technologie",
+      "quote": "« Aucune plateforme numérique, aussi bien conçue soit-elle, ne peut subsister seule »",
+      "p1": "Sans une loi pour l'appuyer, la DNRCI ne serait qu'une application de plus, dépourvue de véritable autorité pour exiger de quiconque qu'il se connecte, coopère ou rende des comptes.",
+      "p2": "Nous ne prétendons pas rédiger le texte juridique final ici. Cela relève de juristes spécialisés et de législateurs, mais nous pouvons préciser les éléments qu'il devrait couvrir au minimum :",
+      "points": [
+        "Créer formellement la DNRCI en tant qu'institution dotée de sa propre autorité juridique, distincte des Archives nationales.",
+        "Donner une validité juridique à l'enregistrement numérique, afin qu'un certificat électronique ait le même poids juridique qu'un certificat papier.",
+        "Établir le NINU comme un identifiant unique et obligatoire à vie.",
+        "Mandater par la loi l'interconnexion entre les institutions, plutôt que de la laisser facultative.",
+        "Protéger les données personnelles et biométriques, avec des règles claires sur qui accède à quoi.",
+        "Garantir la gratuité de l'enregistrement des naissances, y compris pour les enregistrements tardifs.",
+        "Définir un mécanisme de financement pérenne : le SIGEC, un projet similaire en 2006, a échoué non par manque de bonne idée, mais par manque de financement continu."
+      ]
+    },
+    "section10": {
+      "title": "Le problème que personne ne veut regarder en face : les millions de personnes qui existent déjà aujourd'hui",
+      "p1": "Tout ce qui précède résout l'enregistrement à partir du jour où le système entre en service. Mais un problème tout aussi important demeure : les millions d'Haïtiens qui existent déjà aujourd'hui, dont l'acte est stocké dans un registre papier dans un tribunal ou aux Archives nationales. Cet archive historique ne peut tout simplement pas être exclu du NINU.",
+      "p2": "Nous proposons de le résoudre sur deux fronts parallèles, en suivant le modèle utilisé par l'Espagne pour le même problème :",
+      "fronts": [
+        {
+          "name": "Front 1 : Numérisation massive et progressive",
+          "text": "Les registres physiques sont numérisés et structurés, département par département, et non pour tout le pays en même temps, en privilégiant les zones à plus forte population ou présentant la plus grande détérioration des documents (tels que les archives endommagées par le séisme de 2010)"
+        },
+        {
+          "name": "Front 2 : Numérisation à la demande",
+          "text": "Pendant que le Front 1 progresse, tout citoyen ayant besoin d'un ancien certificat pour une démarche peut le demander, et à ce moment-là, il est numérisé, validé et reçoit son NINU immédiatement, sans attendre le tour de sa région"
+        }
+      ],
+      "mitigationTitle": "Compte tenu de la demande extrêmement élevée de documents à des fins migratoires en Haïti, une augmentation soudaine des demandes de passeport pourrait saturer ce second front. Pour l'éviter :",
+      "mitigations": [
+        "Chaque Bureau civil départemental traite ses propres demandes de manière décentralisée (et non tout à Port-au-Prince)",
+        "Les demandes entrent dans une file d'attente dotée d'une capacité élastique, permettant d'ajouter du personnel temporaire lors des moments de forte demande",
+        "Le Front 1 donne la priorité aux archives ayant la plus forte probabilité d'être demandées prochainement",
+        "Les citoyens reçoivent un temps d'attente réel par SMS, e-mail ou par d'autres canaux disponibles selon le cas, afin de ne pas saturer les bureaux physiques",
+        "Chaque certificat numérisé provenant des archives historiques passe par le même moteur de détection des doublons du nouveau système. Un registre datant de plusieurs décennies peut comporter des personnes enregistrées deux fois ou avec des données incomplètes, et ces cas ambigus sont remontés au Siège central"
+      ]
+    },
+    "section11": {
+      "title": "Le pouvoir ne se transfère pas du jour au lendemain",
+      "quote": "« Transférer la fonction d'état civil des ANH vers la nouvelle DNRCI n'est pas seulement un changement technique. C'est un transfert de pouvoir institutionnel »",
+      "p1": "L'expérience d'autres pays montre que les institutions existantes résistent à l'idée de perdre le contrôle de leurs propres bases de données. C'est pourquoi nous proposons une transition graduelle : pendant une période de coexistence définie par la loi, les ANH conservent la garde physique des registres originaux en tant que rôle historique légitime, tandis que la DNRCI construit la base de données dynamique à partir de copies numérisées. Le personnel des bureaux locaux peut choisir d'être transféré vers la nouvelle institution au lieu d'être remplacé."
+    },
+    "section12": {
+      "title": "Qui finance cela de manière durable",
+      "p1": "Nous proposons que la loi établisse un subventionnement croisé : un pourcentage fixe des frais déjà perçus pour les passeports et les renouvellements de cartes d'identité est alloué, par mandat légal (et non par décision discrétionnaire de l'ONI ou de la DIE), à un fonds spécifique qui finance la gratuité des enregistrements de naissances et la numérisation des archives historiques. En l'établissant dans la loi et non comme un transfert volontaire entre institutions, les frictions politiques découlant du fait de demander à une autre institution de céder une partie de ses revenus s'en trouvent réduites."
+    },
+    "section13": {
+      "title": "Les risques que nous ne cacherons pas",
+      "p1": "Cette proposition ne part pas du principe que les conditions pour l'exécuter existent aujourd'hui. Il s'agit d'une base de conception destinée au moment où le contexte le permettra. Malgré tout, toute évaluation sérieuse devrait prendre en compte :",
+      "risks": [
+        {
+          "title": "Continuité institutionnelle",
+          "description": "Sans mécanisme de financement qui survit aux changements de gouvernement, cela risque de répéter l'histoire du SIGEC"
+        },
+        {
+          "title": "Dépendance à l'égard d'un seul fournisseur de technologie",
+          "description": "D'où l'importance d'une clause de transfert de compétences et de propriété des données"
+        },
+        {
+          "title": "Adoption institutionnelle lente",
+          "description": "Une loi et une plateforme ne garantissent pas que les ANH, l'ONI, la DIE ou d'autres institutions impliquées coopéreront immédiatement"
+        },
+        {
+          "title": "Conditions de sécurité et de gouvernance",
+          "description": "Le déploiement du personnel et de l'infrastructure sur l'ensemble du territoire dépend de conditions minimales de stabilité, un facteur échappant au contrôle de toute proposition technique"
+        },
+        {
+          "title": "Vulnérabilité physique aux extrémités du réseau",
+          "description": "Un appareil volé dans une unité mobile rurale pourrait constituer un point d'entrée s'il n'est pas bien sécurisé. Atténuation : administration à distance avec capacité d'effacement en cas de vol, chiffrement local et absence d'appareil de terrain détenant une copie complète de la base de données nationale"
+        },
+        {
+          "title": "Rétention des talents techniques locaux",
+          "description": "L'exploitation de ses propres serveurs nécessite du personnel qualifié susceptible d'émigrer. L'atténuation implique un parcours de carrière technique au sein de la DNRCI, assorti de salaires compétitifs et de certifications reconnues"
+        }
+      ],
+      "footer": "L'objectif de mentionner ces risques n'est pas de décourager la proposition, mais de bien montrer que nous la concevons comme une conception de référence"
+    },
+    "section14": {
+      "title": "Comment le succès serait mesuré",
+      "kpis": [
+        "Couverture d'enregistrement : pourcentage de naissances enregistrées dans les 72 premières heures",
+        "Temps de traitement : de plusieurs semaines ou mois (comme le rapporte l'OCNH aujourd'hui) à quelques jours",
+        "Réduction des bureaux inactifs : passer de cas comme Terre-Neuve ou Cité Soleil à un nombre cible de bureaux opérationnels",
+        "Adoption du NINU : pourcentage de la population disposant d'un identifiant unique actif",
+        "Interconnexion réelle : nombre de requêtes réussies entre les institutions, comme preuve qu'elles communiquent véritablement et ne fonctionnent pas seulement en parallèle"
+      ]
+    },
+    "section15": {
+      "title": "Une feuille de route, sans inventer de chiffres",
+      "p1": "Nous ne définissons pas de montants car cela correspond à une étude de faisabilité formelle, mais nous déclarons la séquence de construction :",
+      "phases": [
+        {
+          "name": "Phase 0 : La loi d'abord",
+          "text": "Approbation de la loi créant la DNRCI, définissant le NINU et le fonds de subventionnement croisé. Aucun composant technique n'est construit avant : sans autorité légale, la plateforme n'a rien pour contraindre quiconque à s'interconnecter"
+        },
+        {
+          "name": "Phase 1 : Les serveurs d'abord",
+          "text": "Construction du Centre principal, mise en place de la couche d'échange X-Road et pilote contrôlé dans un nombre réduit d'hôpitaux dans un seul département"
+        },
+        {
+          "name": "Phase 2 : Ensuite",
+          "text": "Extension du modèle validé aux 9 départements restants, déploiement des unités mobiles rurales, construction du Centre de secours et début de la numérisation historique sur ses deux fronts"
+        }
+      ]
+    },
+    "disclaimer": "Cette proposition est le résultat des recherches d'un groupe indépendant de professionnels haïtiens de la technologie (locaux et de la diaspora), sans expérience formelle en politiques publiques, en financement international ou en droit haïtien. Elle ne prétend pas être un plan d'exécution immédiat ou un document définitif : il s'agit d'une base de conception technique et institutionnelle, construite à partir de recherches sérieuses et de comparaisons internationales vérifiables, afin que des organisations, des institutions ou des spécialistes plus expérimentés puissent la prendre comme point de départ, la corriger et l'adapter en fonction du contexte et du moment que traverse le pays"
+  }
 }

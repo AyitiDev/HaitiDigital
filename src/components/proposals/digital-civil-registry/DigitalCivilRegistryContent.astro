@@ -207,7 +207,7 @@ const { executiveSummary, diagrams, sections } = content;
                   <div class="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center">
                     <Icon name="check" class="w-3.5 h-3.5" />
                   </div>
-                  Can Do
+                  {sections.section8.canDo}
                 </div>
                 <div class="space-y-2 pl-1">
                   {role.allowed && role.allowed.map((item: string) => (
@@ -224,7 +224,7 @@ const { executiveSummary, diagrams, sections } = content;
                   <div class="w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-500/20 flex items-center justify-center">
                     <Icon name="x" class="w-3.5 h-3.5" />
                   </div>
-                  Cannot Do
+                  {sections.section8.cannotDo}
                 </div>
                 <div class="space-y-2 pl-1">
                   {role.denied && role.denied.map((item: string) => (
