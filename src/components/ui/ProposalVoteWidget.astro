@@ -4,20 +4,16 @@ import { useProposals, type SupportedLanguage } from '../../i18n/utils';
 
 interface Props {
   proposalId: string;
-  initialUpvotes: number;
-  initialDislikes: number;
   lang?: SupportedLanguage;
 }
 
-const { proposalId, initialUpvotes, initialDislikes, lang = 'en' } = Astro.props;
+const { proposalId, lang = 'en' } = Astro.props;
 const t = useProposals(lang);
 ---
 
 <div
   id="vote-widget"
   data-proposal-id={proposalId}
-  data-initial-upvotes={initialUpvotes}
-  data-initial-dislikes={initialDislikes}
   class="my-6 p-5 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-colors"
 >
   <div>
@@ -37,7 +33,7 @@ const t = useProposals(lang);
       aria-label={t('detail.upvote')}
     >
       <Icon name="thumbs-up" class="w-4 h-4" />
-      <span id="upvote-count" class="tabular-nums font-bold">{initialUpvotes}</span>
+      <span id="upvote-count" class="tabular-nums font-bold">0</span>
     </button>
 
     <button
@@ -47,12 +43,15 @@ const t = useProposals(lang);
       aria-label={t('detail.downvote')}
     >
       <Icon name="thumbs-down" class="w-4 h-4" />
-      <span id="downvote-count" class="tabular-nums font-bold">{initialDislikes}</span>
+      <span id="downvote-count" class="tabular-nums font-bold">0</span>
     </button>
   </div>
 </div>
 
 <script>
+  import { getFingerprintId } from '../../lib/fingerprint';
+  import { getProposalVotes, submitVote, type VoteType } from '../../lib/voteService';
+
   function setupVoting() {
     const widget = document.getElementById('vote-widget');
     if (!widget) return;
@@ -61,39 +60,67 @@ const t = useProposals(lang);
     const downBtn = document.getElementById('downvote-btn');
     const upEl = document.getElementById('upvote-count');
     const downEl = document.getElementById('downvote-count');
+    const proposalId = widget.getAttribute('data-proposal-id');
 
-    const base = {
-      up: parseInt(widget.getAttribute('data-initial-upvotes') || '0', 10),
-      down: parseInt(widget.getAttribute('data-initial-dislikes') || '0', 10),
-    };
+    if (!upBtn || !downBtn || !upEl || !downEl || !proposalId) return;
 
-    let vote: 'up' | 'down' | null = null;
+    let base = { up: 0, down: 0 };
+    let currentVote: VoteType = null;
+    let fingerprintId: string | null = null;
+    let isLoading = true;
+
+    async function initialize() {
+      // Get the unique fingerprint ID for this device
+      fingerprintId = await getFingerprintId();
+
+      // Fetch the current totals and if this device already voted
+      const stats = await getProposalVotes(proposalId!, fingerprintId);
+      
+      // Update local state
+      base.up = stats.upvotes;
+      base.down = stats.downvotes;
+      currentVote = stats.userVote;
+      
+      // Since stats already includes our vote, we need to artificially subtract it 
+      // from the base so that when render() adds it back, the total is correct
+      if (currentVote === 'up') base.up -= 1;
+      if (currentVote === 'down') base.down -= 1;
+
+      isLoading = false;
+      render();
+    }
+
+    async function handleVoteClick(newVote: VoteType) {
+      if (isLoading || !fingerprintId) return;
+      
+      // Toggle vote logic
+      currentVote = currentVote === newVote ? null : newVote;
+      render();
+
+      // Submit to Supabase asynchronously
+      await submitVote(proposalId!, fingerprintId, currentVote);
+    }
 
     function render() {
       if (!upBtn || !downBtn || !upEl || !downEl) return;
-      const up = base.up + (vote === 'up' ? 1 : 0);
-      const down = base.down + (vote === 'down' ? 1 : 0);
-      upEl.textContent = String(up);
-      downEl.textContent = String(down);
+      const up = base.up + (currentVote === 'up' ? 1 : 0);
+      const down = base.down + (currentVote === 'down' ? 1 : 0);
+      
+      upEl.textContent = isLoading ? '...' : String(up);
+      downEl.textContent = isLoading ? '...' : String(down);
 
       const activeClass = 'border-2 border-neutral-900 dark:border-white bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-bold';
       const neutralClass = 'border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-neutral-900 dark:hover:border-neutral-400 font-semibold';
 
-      upBtn.className = `inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm transition-all cursor-pointer ${vote === 'up' ? activeClass : neutralClass}`;
-      downBtn.className = `inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm transition-all cursor-pointer ${vote === 'down' ? activeClass : neutralClass}`;
+      upBtn.className = `min-h-11 flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm transition-all cursor-pointer ${currentVote === 'up' ? activeClass : neutralClass}`;
+      downBtn.className = `min-h-11 flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm transition-all cursor-pointer ${currentVote === 'down' ? activeClass : neutralClass}`;
     }
 
-    upBtn?.addEventListener('click', () => {
-      vote = vote === 'up' ? null : 'up';
-      render();
-    });
-
-    downBtn?.addEventListener('click', () => {
-      vote = vote === 'down' ? null : 'down';
-      render();
-    });
+    upBtn?.addEventListener('click', () => handleVoteClick('up'));
+    downBtn?.addEventListener('click', () => handleVoteClick('down'));
 
     render();
+    initialize();
   }
 
   setupVoting();
