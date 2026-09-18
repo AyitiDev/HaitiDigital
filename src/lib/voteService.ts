@@ -8,37 +8,39 @@ export interface VoteStats {
   userVote: VoteType;
 }
 
-// Retrieves the current total votes for a proposal and the user's specific vote
+// Retrieves the current total votes for a proposal and the user's specific vote in parallel
 export async function getProposalVotes(proposalId: string, fingerprintId: string): Promise<VoteStats> {
   const stats: VoteStats = { upvotes: 0, downvotes: 0, userVote: null };
 
   try {
-    // Get totals from the view
-    const { data: viewData, error: viewError } = await supabase
-      .from('proposal_votes_summary')
-      .select('upvotes, downvotes')
-      .eq('proposal_id', proposalId)
-      .maybeSingle();
+    // Run both queries concurrently to minimize latency
+    const [summaryRes, userVoteRes] = await Promise.all([
+      supabase
+        .from('proposal_votes_summary')
+        .select('upvotes, downvotes')
+        .eq('proposal_id', proposalId)
+        .maybeSingle(),
+      fingerprintId
+        ? supabase
+            .from('votes_log')
+            .select('vote_type')
+            .eq('proposal_id', proposalId)
+            .eq('fingerprint_id', fingerprintId)
+            .maybeSingle()
+        : Promise.resolve({ data: null, error: null })
+    ]);
 
-    if (viewError) {
-      console.error('[VoteService] Failed to load vote summary:', viewError.message);
-    } else if (viewData) {
-      stats.upvotes = viewData.upvotes || 0;
-      stats.downvotes = viewData.downvotes || 0;
+    if (summaryRes.error) {
+      console.error('[VoteService] Failed to load vote summary:', summaryRes.error.message);
+    } else if (summaryRes.data) {
+      stats.upvotes = summaryRes.data.upvotes || 0;
+      stats.downvotes = summaryRes.data.downvotes || 0;
     }
 
-    // Get the specific user's vote if they already voted
-    const { data: userVoteData, error: userVoteError } = await supabase
-      .from('votes_log')
-      .select('vote_type')
-      .eq('proposal_id', proposalId)
-      .eq('fingerprint_id', fingerprintId)
-      .maybeSingle();
-
-    if (userVoteError) {
-      console.error('[VoteService] Failed to load user vote:', userVoteError.message);
-    } else if (userVoteData) {
-      stats.userVote = userVoteData.vote_type as VoteType;
+    if (userVoteRes.error) {
+      console.error('[VoteService] Failed to load user vote:', userVoteRes.error.message);
+    } else if (userVoteRes.data) {
+      stats.userVote = userVoteRes.data.vote_type as VoteType;
     }
   } catch (err) {
     console.error('[VoteService] Unexpected error retrieving proposal votes:', err instanceof Error ? err.message : err);
