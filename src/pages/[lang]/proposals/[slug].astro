@@ -4,10 +4,11 @@ import Icon from '../../../components/ui/Icon.astro';
 import ProposalVoteWidget from '../../../components/ui/ProposalVoteWidget.astro';
 import DigitalCivilRegistryContent from '../../../components/proposals/digital-civil-registry/DigitalCivilRegistryContent.astro';
 import { getProposals, getProposalBySlug } from '../../../data/proposals';
-import { useUi, useProposals, getLocalizedPath, activeLanguages, type SupportedLanguage } from '../../../i18n/utils';
+import { useUi, useProposals, getLocalizedPath, activeLanguages, type SupportedLanguage, type UiKey } from '../../../i18n/utils';
+import type { Proposal } from '../../../data/types';
 
 export function getStaticPaths() {
-  const paths: { params: { lang: SupportedLanguage; slug: string }; props: { proposal: any } }[] = [];
+  const paths: { params: { lang: SupportedLanguage; slug: string }; props: { proposal: Proposal } }[] = [];
   for (const lang of activeLanguages) {
     const proposals = getProposals(lang);
     for (const proposal of proposals) {
@@ -21,7 +22,7 @@ export function getStaticPaths() {
 }
 
 const { lang, slug } = Astro.params as { lang: SupportedLanguage; slug: string };
-const proposal = Astro.props.proposal ?? getProposalBySlug(slug, lang);
+const proposal: Proposal | undefined = Astro.props.proposal ?? getProposalBySlug(slug, lang);
 
 if (!proposal) {
   return Astro.redirect(getLocalizedPath('/', lang));
@@ -29,7 +30,7 @@ if (!proposal) {
 
 const tUi = useUi(lang);
 const t = useProposals(lang);
-const categoryLabel = tUi(`categories.${proposal.category}` as any, proposal.category);
+const categoryLabel = tUi(`categories.${proposal.category}` as UiKey, proposal.category);
 const isInDevelopment = proposal.status === 'in_development';
 ---
 
@@ -100,13 +101,29 @@ const isInDevelopment = proposal.status === 'in_development';
       {proposal.hasCustomContent ? (
         <DigitalCivilRegistryContent lang={lang} />
       ) : isInDevelopment ? (
-        <div class="my-8 p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-center space-y-2 transition-colors">
+        <div class="my-8 p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-center space-y-4 transition-colors">
           <p class="text-sm font-bold text-neutral-900 dark:text-white">
             {t('detail.inDevelopment')}
           </p>
           <p class="text-xs text-neutral-500 dark:text-neutral-400 max-w-sm mx-auto">
             {t('detail.inDevelopmentSub')}
           </p>
+          {slug === 'land-registry' && (
+            <div class="pt-2">
+              <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-3">
+                Open source land registration system in development
+              </p>
+              <a
+                href="https://github.com/AyitiDev/Bornage"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-bold hover:opacity-80 transition-opacity"
+              >
+                <Icon name="github" class="w-4 h-4" />
+                View on GitHub
+              </a>
+            </div>
+          )}
         </div>
       ) : (
         <>
@@ -138,7 +155,7 @@ const isInDevelopment = proposal.status === 'in_development';
               <ul class="space-y-3">
                 {proposal.detail.technicalArchitecture.items.map((item) => (
                   <li class="flex items-start gap-2.5 text-xs sm:text-sm">
-                    <Icon name="check" class="w-3.5 h-3.5 text-neutral-900 dark:text-white mt-0.5 flex-shrink-0" />
+                    <Icon name="check" class="w-3.5 h-3.5 text-neutral-900 dark:text-white mt-0.5 shrink-0" />
                     <div>
                       <strong class="font-bold text-neutral-900 dark:text-white">{item.label}:</strong>{' '}
                       <span class="text-neutral-600 dark:text-neutral-400">{item.value}</span>

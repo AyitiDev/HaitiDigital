@@ -4,16 +4,20 @@ import { useProposals, type SupportedLanguage } from '../../i18n/utils';
 
 interface Props {
   proposalId: string;
+  initialUpvotes?: number;
+  initialDislikes?: number;
   lang?: SupportedLanguage;
 }
 
-const { proposalId, lang = 'en' } = Astro.props;
+const { proposalId, initialUpvotes = 0, initialDislikes = 0, lang = 'en' } = Astro.props;
 const t = useProposals(lang);
 ---
 
 <div
   id="vote-widget"
   data-proposal-id={proposalId}
+  data-initial-upvotes={initialUpvotes}
+  data-initial-dislikes={initialDislikes}
   class="my-6 p-5 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-colors"
 >
   <div>
@@ -64,7 +68,9 @@ const t = useProposals(lang);
 
     if (!upBtn || !downBtn || !upEl || !downEl || !proposalId) return;
 
-    let base = { up: 0, down: 0 };
+    const initUp = parseInt(widget.getAttribute('data-initial-upvotes') || '0', 10);
+    const initDown = parseInt(widget.getAttribute('data-initial-dislikes') || '0', 10);
+    let base = { up: initUp, down: initDown };
     let currentVote: VoteType = null;
     let fingerprintId: string | null = null;
     let isLoading = true;
