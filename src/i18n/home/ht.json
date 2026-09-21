@@ -40,7 +40,8 @@
     "health": "Sante",
     "education": "Edikasyon",
     "security": "Sekirite",
-    "infrastructure": "Enfrastrikti"
+    "infrastructure": "Enfrastrikti",
+    "land": "Tè"
   },
   "card": {
     "statusComplete": "Pwopozisyon konplè",

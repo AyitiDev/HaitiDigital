@@ -180,7 +180,11 @@ const encoded = Buffer.from(diagram.trim(), 'utf-8').toString('base64');
     }
   }
 
-  renderAll();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderAll);
+  } else {
+    renderAll();
+  }
   document.addEventListener('astro:page-load', renderAll);
   document.addEventListener('click', (event) => {
     if (!(event.target as Element).closest('#theme-toggle')) return;

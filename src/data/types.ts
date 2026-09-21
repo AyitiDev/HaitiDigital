@@ -4,7 +4,8 @@ export type ProposalCategory =
   | 'health'
   | 'education'
   | 'security'
-  | 'infrastructure';
+  | 'infrastructure'
+  | 'land';
 
 export type ProposalStatus = 'complete' | 'in_development';
 

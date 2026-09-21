@@ -23,6 +23,26 @@ export const PROPOSALS: Proposal[] = [
       commentsCount: 0,
     },
   },
+  {
+    id: 'prop-2',
+    slug: 'land-registry',
+    category: 'land',
+    status: 'in_development',
+    icon: 'landmark',
+    hasCustomContent: false,
+    title: 'Land Registry',
+    summary:
+      'Open source land registration system to formalize property rights and reduce land disputes across Haiti',
+    detail: {
+      leadTitle: 'Open Source Land Registration System In Development',
+      author: 'Ayiti Dijital Team',
+      publishDate: '2026-09-21',
+      readingTime: '1',
+      initialUpvotes: 0,
+      initialDislikes: 0,
+      commentsCount: 0,
+    },
+  },
 ];
 
 export function getProposals(lang?: SupportedLanguage): Proposal[] {
@@ -60,6 +80,7 @@ export function getProposalBySlug(slug: string, lang?: SupportedLanguage): Propo
 export const CATEGORIES_CONFIG: { id: ProposalCategory | 'all'; labelKey: string }[] = [
   { id: 'all', labelKey: 'categories.all' },
   { id: 'identity', labelKey: 'categories.identity' },
+  { id: 'land', labelKey: 'categories.land' },
 ];
 
 export function getCategoryCounts(): Record<string, number> {

@@ -40,7 +40,8 @@
     "health": "Santé",
     "education": "Éducation",
     "security": "Sécurité",
-    "infrastructure": "Infrastructure"
+    "infrastructure": "Infrastructure",
+    "land": "Foncier"
   },
   "card": {
     "statusComplete": "Proposition complète",
